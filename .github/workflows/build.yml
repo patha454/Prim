@@ -6,10 +6,13 @@ jobs:
   build:
 
     runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        toolchain: [gcc, ]
 
     steps:
     - uses: actions/checkout@v2
     - name: Configure
       run: cmake -B build .
     - name: Build
-      run: cmake --build build
+      run: CC=${{ matrix.toolchain }} cmake --build build
