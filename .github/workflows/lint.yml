@@ -1,0 +1,13 @@
+name: Lint
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: Install clang-tidy
+      run: sudo apt-get install clang-tidy
+    - name: clang-tidy
+      run: find . -name "*.c" -or -name "*.h" | xargs clang-tidy --checks=*
