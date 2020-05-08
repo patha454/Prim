@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Configure
-      run: cmake -B build .
+      run: CC=${{ matrix.toolchain }} cmake -B build .
     - name: Build
-      run: CC=${{ matrix.toolchain }} echo $CC
+      run: cmake --build build
