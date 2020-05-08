@@ -15,4 +15,4 @@ jobs:
     - name: Configure
       run: cmake -B build .
     - name: Build
-      run: CC=${{ matrix.toolchain }} cmake --build build
+      run: CC=${{ matrix.toolchain }} echo $CC
