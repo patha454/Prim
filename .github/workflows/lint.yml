@@ -1,4 +1,4 @@
-name: CI
+name: Lint
 on: push
 
 jobs:
@@ -8,6 +8,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: install
-      run: sudo apt-get clang-tidy
+      run: sudo apt-get install clang-tidy
     - name: clang-tidy
       run: find . -name "*.c" -or -name "*.h" | xargs clang-tidy --checks=*
