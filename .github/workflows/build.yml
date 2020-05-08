@@ -13,6 +13,6 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Configure
-      run: CC=${{ matrix.toolchain }} cmake -B build .
+      run: CC=${{ matrix.toolchain }} CXX=${{ matrix.toolchain }} CFLAGS="-Wall -Wextra -Wpedantic -Werror" cmake -B build .
     - name: Build
       run: cmake --build build
