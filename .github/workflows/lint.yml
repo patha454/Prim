@@ -1,0 +1,11 @@
+name: CI
+on: push
+
+jobs:
+  lint:
+    runs-on: ubuntu-latest
+
+    steps:
+    - uses: actions/checkout@v2
+    - name: clang-tidy
+      run: find . -name "*.c" -or -name "*.h" | xargs clang-tidy --checks=*
