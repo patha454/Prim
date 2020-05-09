@@ -8,8 +8,8 @@
  * @date May 2020.
  */
 
-#ifndef INCLUDE_FORMAT_ELF64_TYPES_H
-#define INCLUDE_FORMAT_ELF64_TYPES_H
+#ifndef FORMAT_ELF64_TYPES_H
+#define FORMAT_ELF64_TYPES_H
 
 
 #include <stdint.h>
