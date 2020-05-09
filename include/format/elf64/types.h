@@ -8,6 +8,9 @@
  * @date May 2020.
  */
 
+#ifndef FORMAT_ELF64_TYPES_H
+#define FORMAT_ELF64_TYPES_H
+
 
 #include <stdint.h>
 
@@ -38,3 +41,5 @@ typedef uint8_t Elf64_Byte;
 
 /** ELF64 section index. */
 typedef uint16_t Elf64_Section;
+
+#endif
