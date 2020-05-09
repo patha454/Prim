@@ -8,8 +8,8 @@
  * @date May 2020.
  */
 
-#ifndef FORMAT_ELF64_HEADER_H_
-#define FORMAT_ELF64_HEADER_H_
+#ifndef FORMAT_ELF64_HEADER_H
+#define FORMAT_ELF64_HEADER_H
 
 
 #include "format/elf64/types.h"
