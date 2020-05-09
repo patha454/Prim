@@ -31,10 +31,10 @@ typedef int32_t Elf64_Sword;
 typedef int64_t Elf64_Sxword;
 
 /** ELF64 unsigned medium integer. */
-typedef int32_t Elf64_Word;
+typedef uint32_t Elf64_Word;
 
 /** ELF64 Unsigned large integer. */
-typedef int64_t Elf64_Xword;
+typedef uint64_t Elf64_Xword;
 
 /** ELF64 unsigned tiny integer. */
 typedef uint8_t Elf64_Byte;
