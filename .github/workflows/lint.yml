@@ -10,6 +10,6 @@ jobs:
     - name: Install clang-tidy
       run: sudo apt-get install clang-tidy
     - name: Generate compile commands
-      run: CC=clang CXX=clang cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build
+      run: echo clang-tidy --version && echo clang --version && CC=clang CXX=clang cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build
     - name: clang-tidy
       run: find . -path "*/src/*.c" -or -path "*/include/*.h" -or -name "main.c" | xargs clang-tidy --config="" -p build/compile_commands.json
