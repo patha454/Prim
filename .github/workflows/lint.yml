@@ -8,7 +8,7 @@ jobs:
     steps:
     - uses: actions/checkout@v2
     - name: Install clang-tidy
-      run: sudo apt-get install clang-tidy
+      run: sudo apt-get install clang-tidy clang llvm
     - name: Generate compile commands
       run: echo $(clang-tidy --version) && echo $(clang --version) && CC=clang CXX=clang cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build
     - name: clang-tidy
