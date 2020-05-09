@@ -11,4 +11,4 @@ jobs:
       run: sudo apt-get install clang-tidy
     - name: clang-tidy
       run: |
-        find . -path "*/src/*.c" -or -path "*/include/*.h" --exec clang-tidy {} -checks=* -warnings-as-errors=* -- -Iinclude ';'
+        find . -path "*/src/*.c" -or -path "*/include/*.h" -exec clang-tidy {} -checks=* -warnings-as-errors=* -- -Iinclude ';'
