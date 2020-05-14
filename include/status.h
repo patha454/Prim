@@ -9,6 +9,9 @@
  * @date May 2020.
  */
 
+#ifndef STATUS_H
+#define STATUS_H
+
 typedef enum PrimStatus
 {
     /** Success - No error. */
@@ -28,7 +31,7 @@ typedef enum PrimStatus
  * @param status The status code to string-ify;
  * @return A human readable status string.
  */
-extern const char* get_status_string(const PrimStatus status);
+extern const char* get_status_string(PrimStatus status);
 
 /**
  * Checks is a status code is a valid status code.
@@ -37,3 +40,5 @@ extern const char* get_status_string(const PrimStatus status);
  * @return 1 if the status code is valid, 0 otherwise.
  */
 extern PrimStatus is_status_code_valid(PrimStatus status);
+
+#endif
