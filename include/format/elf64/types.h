@@ -12,34 +12,34 @@
 #define FORMAT_ELF64_TYPES_H
 
 
-#include <stdint.h>
+#include "platform/types.h"
 
 
 /** ELF64 program address. */
-typedef uint64_t Elf64_Address;
+typedef prim_u64 Elf64_Address;
 
 /** ELF6 small unsigned integer. */
-typedef uint16_t Elf64_Half;
+typedef prim_u16 Elf64_Half;
 
 /** ELF64 unsigned file offset. */
-typedef uint64_t Elf64_Offset;
+typedef prim_u64 Elf64_Offset;
 
 /** ELF64 signed medium integer. */
-typedef int32_t Elf64_Sword;
+typedef prim_s32 Elf64_Sword;
 
 /** ELF64 signed large integer. */
-typedef int64_t Elf64_Sxword;
+typedef prim_s64 Elf64_Sxword;
 
 /** ELF64 unsigned medium integer. */
-typedef uint32_t Elf64_Word;
+typedef prim_u32 Elf64_Word;
 
 /** ELF64 Unsigned large integer. */
-typedef uint64_t Elf64_Xword;
+typedef prim_u64 Elf64_Xword;
 
 /** ELF64 unsigned tiny integer. */
-typedef uint8_t Elf64_Byte;
+typedef prim_u8 Elf64_Byte;
 
 /** ELF64 section index. */
-typedef uint16_t Elf64_Section;
+typedef prim_u16 Elf64_Section;
 
 #endif
