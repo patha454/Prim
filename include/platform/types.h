@@ -1,10 +1,10 @@
 /** @file types.h
  *
  * `types.h` provides abstraction of the platform's native
- * types for maximum portability.
+ * integer types for maximum portability.
  *
  * Prim needs fixed width types to correctly parse binary
- * formates. Diffrent platforms (freestanding, UEFI,
+ * formats. Diffrent platforms (freestanding, UEFI,
  * Linux kernal, Unix userspace...) provide diffrent
  * definitions for a fixed width type.
  *
@@ -25,6 +25,7 @@
 
 
 #include <stdint.h>
+
 
 /** Unsigned 8-bit integer. */
 typedef uint8_t prim_u8;
