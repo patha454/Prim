@@ -14,3 +14,27 @@ Prim$ cmake --build build
 ```
 
 The build can be customized and controlled through standard Cmake configuration and options.
+
+# Objectives
+
+Prim initially aims to support loading statically linked ELF64 executable, from userspace, on a Linux x86-64 machine.
+
+The aim is to enable performance comparisons between current kernel loaders, and Prim.
+
+## Minimum Viable Product.
+
+The minimum viable produced aims to demonstrate basic loading from userspace.
+
+- Static loading only.
+- ELF64 binaries only.
+- Userspace Linux x86-64 platform.
+
+### Roadmap
+
+Further development may include:
+
+- Dynamic loading and linking.
+- Additional binary formats.
+- Ports to other platforms, including kernel modules.
+- Generating process images. (Core dumps on demand.)
+- Generating binaries from raw data (Object file generation...)
