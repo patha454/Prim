@@ -7,5 +7,16 @@ project(Prim)
 # Set the include paths.
 include_directories(include)
 
-add_executable(prim main.c
+# Declare the prim library target.
+add_library(prim STATIC
     src/status.c)
+
+# Declare the prim driver executable target.
+add_executable(prim_app
+    src/main.c)
+
+# Link the Prim driver to the library.
+target_link_libraries(prim_app prim)
+
+# Just name the Prim driver 'prim'. The library should be something like 'libprim' by default.
+set_target_properties(prim_app PROPERTIES OUTPUT_NAME "prim")
