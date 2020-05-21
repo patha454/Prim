@@ -7,9 +7,9 @@
 
 int main()
 {
-    prim_file_handle handle;
-    PrimStatus status;
-    Elf64_Header header;
+    prim_file_handle handle = NULL;
+    PrimStatus status = STATUS_ERROR;
+    Elf64_Header header = { 0 };
     status = prim_fopen("build/prim", &handle);
     if (status != STATUS_OKAY)
     {

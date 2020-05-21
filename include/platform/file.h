@@ -75,7 +75,7 @@ extern PrimStatus prim_fread(
  * @return STATUS_OKAY on success, otherwise an error code.
  */
 extern PrimStatus prim_fseek(
-    const prim_file_handle file_handle,
+    prim_file_handle file_handle,
     const size_t offset
 );
 

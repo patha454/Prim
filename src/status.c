@@ -39,7 +39,7 @@ static const struct StatusString status_strings[] =
 extern const char* get_status_string(const PrimStatus status)
 {
     static const char* const unrecognised_status = "<STATUS_CODE_INVALID>";
-    unsigned int i;
+    unsigned int i = 0;
     for (i = 0;
          i < sizeof(status_strings) / sizeof(struct StatusString);
          i++)
@@ -60,7 +60,7 @@ extern const char* get_status_string(const PrimStatus status)
  */
 extern PrimStatus is_status_code_valid(PrimStatus status)
 {
-    unsigned int i;
+    unsigned int i = 0;
     for (i = 0;
          i < sizeof(status_strings) / sizeof(struct StatusString);
          i++)
