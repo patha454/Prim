@@ -47,7 +47,7 @@ typedef FILE* prim_file_handle;
  */
 extern PrimStatus prim_fopen(
     const char* path,
-    prim_file_handle* const file_handle
+    prim_file_handle* file_handle
 );
 
 /**
@@ -76,7 +76,7 @@ extern PrimStatus prim_fread(
  */
 extern PrimStatus prim_fseek(
     prim_file_handle file_handle,
-    const size_t offset
+    size_t offset
 );
 
 #endif

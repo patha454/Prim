@@ -34,7 +34,7 @@
  */
 extern PrimStatus prim_fopen(
     const char* path,
-    prim_file_handle* const file_handle
+    prim_file_handle* file_handle
 )
 {
     FILE* native_file = fopen(path, "r");

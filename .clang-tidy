@@ -5,6 +5,7 @@ Checks: >-
             clang-analyzer-*,
             cppcoreguidelines-*,
             llvm-*,
+            readability-*,
             -llvmlibc-restrict-system-libc-headers,
             -android-*,
 WarningsAsErrors: '*'
