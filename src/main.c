@@ -1,4 +1,5 @@
-#include "format/elf64/types.h"
+#include "platform/file.h"
+#include "format/elf64/header.h"
 #include "status.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -6,9 +7,21 @@
 
 int main()
 {
-    PrimStatus status = is_status_code_valid(9);
-    Elf64_Sword include_test = 1;
-    printf("%s\n", get_status_string(status));
-    printf("Edit main.c to start the project.\n");
-    return include_test;
+    prim_file_handle handle = NULL;
+    PrimStatus status = STATUS_ERROR;
+    Elf64_Header header = { 0 };
+    status = prim_fopen("build/prim", &handle);
+    if (status != STATUS_OKAY)
+    {
+        printf("Open failed: %s\n", get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    status = prim_fread(&header, sizeof(Elf64_Header), 1, handle);
+    if (status != STATUS_OKAY)
+    {
+        printf("Read failed: %s\n", get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    printf("Object type is: %d\n", header.type);
+    return 0;
 }

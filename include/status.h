@@ -20,8 +20,14 @@ typedef enum PrimStatus
     /** Unspecified error. */
     STATUS_ERROR,
 
-    /** Invalid or out or range. */
+    /** Invalid input. */
     STATUS_INVALID,
+
+    /** File does not exist, or cannot be opened. */
+    STATUS_BAD_FILE,
+
+    /** Internal file read/write error. */
+    STATUS_FILE_IO_ERROR,
 
 } PrimStatus;
 

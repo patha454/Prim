@@ -9,11 +9,14 @@ include_directories(include)
 
 # Declare the prim library target.
 add_library(prim STATIC
-    src/status.c)
+    src/status.c
+    src/platform/file.c
+)
 
 # Declare the prim driver executable target.
 add_executable(prim_app
-    src/main.c)
+    src/main.c
+)
 
 # Link the Prim driver to the library.
 target_link_libraries(prim_app prim)

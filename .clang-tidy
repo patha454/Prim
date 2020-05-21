@@ -3,8 +3,11 @@ Checks: >-
             *,
             clang-diagnostic-*,
             clang-analyzer-*,
+            cppcoreguidelines-*,
             llvm-*,
-            -llvmlibc-restrict-system-libc-headers
+            readability-*,
+            -llvmlibc-restrict-system-libc-headers,
+            -android-*,
 WarningsAsErrors: '*'
 HeaderFilterRegex: ''
 AnalyzeTemporaryDtors: false
