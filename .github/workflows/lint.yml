@@ -12,4 +12,4 @@ jobs:
     - name: Generate compile commands
       run: CC=clang CXX=clang cmake -DCMAKE_EXPORT_COMPILE_COMMANDS=ON -B build
     - name: clang-tidy
-      run: find . -path "*/src/*.c" -or -path "*/include/*.h" -or -name "main.c" | xargs -i clang-tidy --config="" -p build/compile_commands.json {} -- -Iinclude
+      run: find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs -i clang-tidy --config="" -p build/compile_commands.json {} -- -Iinclude
