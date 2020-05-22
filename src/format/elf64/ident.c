@@ -1,11 +1,11 @@
 /**
  * @file src/format/elf64/ident.c
  *
- * Ident field information for ELG64 binaries.
+ * Ident field information for ELF64 binaries.
  *
  * @author H Paterson.
  * @copyright BSL-1.0.
- * @data May 2020.
+ * @date May 2020.
  */
 
 
@@ -35,7 +35,7 @@ struct VersionString
     const char* const name;
 };
 
-/** Maps class codes with human readable names. */
+/** Maps class codes to human readable names. */
 static const struct ClassString class_strings[] =
 {
     {ELF64_CLASS_NONE,  "ELF64_CLASS_NONE"},
