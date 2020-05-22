@@ -170,10 +170,6 @@ extern PrimStatus elf64_is_machine_valid(ELF64_Machine machine)
         {
             return STATUS_OKAY;
         }
-        else
-        {
-            //pass
-        }
     }
     return STATUS_INVALID;
 }
