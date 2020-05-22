@@ -2,7 +2,7 @@ name: Style
 on: push
 
 jobs:
-  lint:
+  style-check:
     runs-on: ubuntu-latest
 
     steps:
