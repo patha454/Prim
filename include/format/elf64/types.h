@@ -11,9 +11,7 @@
 #ifndef FORMAT_ELF64_TYPES_H
 #define FORMAT_ELF64_TYPES_H
 
-
 #include "platform/types.h"
-
 
 /** ELF64 program address. */
 typedef prim_u64 Elf64_Address;

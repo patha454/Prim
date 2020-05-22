@@ -26,38 +26,36 @@ struct MachineString
 };
 
 /** Maps ELF64 object types to human readable names. */
-static const struct TypeString type_strings[] =
-{
-    {ELF64_TYPE_NONE,           "ELF64_TYPE_NONE"},
-    {ELF64_TYPE_RELOCATABLE,    "ELF64_TYPE_RELOCATABLE"},
-    {ELF64_TYPE_EXECUTABLE,     "ELF64_TYPE_EXECUTABLE"},
-    {ELF64_TYPE_DYNAMIC,        "ELF64_TYPE_DYNAMIC"},
-    {ELF64_TYPE_CORE,           "ELF64_TYPE_CORE"},
-    {ELF64_TYPE_LOPROC,         "ELF64_TYPE_LOPROC"},
-    {ELF64_TYPE_HIPROC,         "ELF64_TYPE_HIPROC"},
+static const struct TypeString type_strings[] = {
+    { ELF64_TYPE_NONE, "ELF64_TYPE_NONE" },
+    { ELF64_TYPE_RELOCATABLE, "ELF64_TYPE_RELOCATABLE" },
+    { ELF64_TYPE_EXECUTABLE, "ELF64_TYPE_EXECUTABLE" },
+    { ELF64_TYPE_DYNAMIC, "ELF64_TYPE_DYNAMIC" },
+    { ELF64_TYPE_CORE, "ELF64_TYPE_CORE" },
+    { ELF64_TYPE_LOPROC, "ELF64_TYPE_LOPROC" },
+    { ELF64_TYPE_HIPROC, "ELF64_TYPE_HIPROC" },
 };
 
 /** Maps ELF64 machine codes to human readable names. */
-static const struct MachineString machine_strings[] =
-{
-    {ELF64_MACHINE_NONE,        "ELF64_MACHINE_NONE"},
-    {ELF64_MACHINE_M32,         "ELF64_MACHINE_M32"},
-    {ELF64_MACHINE_SPARC,       "ELF64_MACHINE_SPARC"},
-    {ELF64_MACHINE_I386,        "ELF64_MACHINE_I386"},
-    {ELF64_MACHINE_68K,         "ELF64_MACHINE_68K"},
-    {ELF64_MACHINE_88K,         "ELF64_MACHINE_88K"},
-    {ELF64_MACHINE_860,         "ELF64_MACHINE_860"},
-    {ELF64_MACHINE_MIPS,        "ELF64_MACHINE_MIPS"},
-    {ELF64_MACHINE_MIPS_RS4_BE, "ELF64_MACHINE_MIPS_RS4_BE"},
-    {ELF64_MACHINE_POWERPC32,   "ELF64_MACHINE_POWERPC32"},
-    {ELF64_MACHINE_POWERPC64,   "ELF64_MACHINE_POWERPC64"},
-    {ELF64_MACHINE_S390,        "ELF64_MACHINE_S390"},
-    {ELF64_MACHINE_ARM,         "ELF64_MACHINE_ARM"},
-    {ELF64_MACHINE_SUPERH,      "ELF64_MACHINE_SUPERH"},
-    {ELF64_MACHINE_IA64,        "ELF64_MACHINE_IA64"},
-    {ELF64_MACHINE_AMD64,       "ELF64_MACHINE_AMD64"},
-    {ELF64_MACHINE_AARCH64,     "ELF64_MACHINE_AARCH64"},
-    {ELF64_MACHINE_RISC_V,      "ELF64_MACHINE_RISC_V"},
+static const struct MachineString machine_strings[] = {
+    { ELF64_MACHINE_NONE, "ELF64_MACHINE_NONE" },
+    { ELF64_MACHINE_M32, "ELF64_MACHINE_M32" },
+    { ELF64_MACHINE_SPARC, "ELF64_MACHINE_SPARC" },
+    { ELF64_MACHINE_I386, "ELF64_MACHINE_I386" },
+    { ELF64_MACHINE_68K, "ELF64_MACHINE_68K" },
+    { ELF64_MACHINE_88K, "ELF64_MACHINE_88K" },
+    { ELF64_MACHINE_860, "ELF64_MACHINE_860" },
+    { ELF64_MACHINE_MIPS, "ELF64_MACHINE_MIPS" },
+    { ELF64_MACHINE_MIPS_RS4_BE, "ELF64_MACHINE_MIPS_RS4_BE" },
+    { ELF64_MACHINE_POWERPC32, "ELF64_MACHINE_POWERPC32" },
+    { ELF64_MACHINE_POWERPC64, "ELF64_MACHINE_POWERPC64" },
+    { ELF64_MACHINE_S390, "ELF64_MACHINE_S390" },
+    { ELF64_MACHINE_ARM, "ELF64_MACHINE_ARM" },
+    { ELF64_MACHINE_SUPERH, "ELF64_MACHINE_SUPERH" },
+    { ELF64_MACHINE_IA64, "ELF64_MACHINE_IA64" },
+    { ELF64_MACHINE_AMD64, "ELF64_MACHINE_AMD64" },
+    { ELF64_MACHINE_AARCH64, "ELF64_MACHINE_AARCH64" },
+    { ELF64_MACHINE_RISC_V, "ELF64_MACHINE_RISC_V" },
 };
 
 /**
@@ -73,7 +71,7 @@ extern ELF64_Type elf64_get_object_type(
     const Elf64_Header* const header)
 {
     ELF64_Type type = ELF64_TYPE_NONE;
-    type = (ELF64_Type) header->type;
+    type = (ELF64_Type)header->type;
     return type;
 }
 
@@ -88,15 +86,15 @@ extern const char* elf64_get_type_string(const ELF64_Type type)
     static const char* const unrecognised_type = "<ELF64_TYPE_CODE_INVALID>";
     unsigned int i = 0;
     for (i = 0;
-        i < sizeof(type_strings) / sizeof(struct TypeString);
-        i++)
+         i < sizeof(type_strings) / sizeof(struct TypeString);
+         i++)
     {
         if (type_strings[i].type == type)
         {
             return type_strings[i].name;
         }
     }
-    return unrecognised_type;        
+    return unrecognised_type;
 }
 
 /**
@@ -133,7 +131,7 @@ extern ELF64_Machine elf64_get_machine(
     const Elf64_Header* const header)
 {
     ELF64_Machine machine = ELF64_MACHINE_NONE;
-    machine = (ELF64_Machine) header->machine;
+    machine = (ELF64_Machine)header->machine;
     return machine;
 }
 
@@ -147,16 +145,14 @@ extern const char* elf64_get_machine_string(const ELF64_Machine machine)
 {
     static const char* const unrecognised_machine = "<ELF64_MACHINE_CODE_INVALID>";
     unsigned int i = 0;
-    for (i = 0;
-        i < sizeof(machine_strings) / sizeof(struct MachineString);
-        i++)
+    for (i = 0; i < sizeof(machine_strings) / sizeof(struct MachineString); i++)
     {
         if (machine_strings[i].machine == machine)
         {
             return machine_strings[i].name;
         }
     }
-    return unrecognised_machine;       
+    return unrecognised_machine;
 }
 
 /**
@@ -168,13 +164,15 @@ extern const char* elf64_get_machine_string(const ELF64_Machine machine)
 extern PrimStatus elf64_is_machine_valid(ELF64_Machine machine)
 {
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(machine_strings) / sizeof(struct MachineString);
-         i++)
+    for (i = 0; i < sizeof(machine_strings) / sizeof(struct MachineString); i++)
     {
         if (machine_strings[i].machine == machine)
         {
             return STATUS_OKAY;
+        }
+        else
+        {
+            //pass
         }
     }
     return STATUS_INVALID;

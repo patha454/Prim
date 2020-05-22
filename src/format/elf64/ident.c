@@ -8,11 +8,9 @@
  * @date May 2020.
  */
 
-
-#include "format/elf64/header.h"
 #include "format/elf64/ident.h"
+#include "format/elf64/header.h"
 #include "status.h"
-
 
 /** Associates an ELF64 class with a human readable name. */
 struct ClassString
@@ -36,26 +34,23 @@ struct VersionString
 };
 
 /** Maps class codes to human readable names. */
-static const struct ClassString class_strings[] =
-{
-    {ELF64_CLASS_NONE,  "ELF64_CLASS_NONE"},
-    {ELF64_CLASS_32BIT, "ELF64_CLASS_32BIT"},
-    {ELF64_CLASS_64BIT, "ELF64_CLASS_64BIT"},
+static const struct ClassString class_strings[] = {
+    { ELF64_CLASS_NONE, "ELF64_CLASS_NONE" },
+    { ELF64_CLASS_32BIT, "ELF64_CLASS_32BIT" },
+    { ELF64_CLASS_64BIT, "ELF64_CLASS_64BIT" },
 };
 
 /** Maps data codes with human readable names. */
-static const struct DataString data_strings[] =
-{
-    {ELF64_DATA_NONE,   "ELF64_DATA_NONE"},
-    {ELF64_DATA_LSB,    "ELF64_DATA_LSB"},
-    {ELF64_DATA_MSB,    "ELF64_DATA_MSB"},
+static const struct DataString data_strings[] = {
+    { ELF64_DATA_NONE, "ELF64_DATA_NONE" },
+    { ELF64_DATA_LSB, "ELF64_DATA_LSB" },
+    { ELF64_DATA_MSB, "ELF64_DATA_MSB" },
 };
 
 /** Maps version codes with human readable names. */
-static const struct VersionString version_strings[] =
-{
-    {ELF64_VERSION_NONE,    "ELF64_VERSION_NONE"},
-    {ELF64_VERSION_CURRENT, "ELF64_VERSION_CURRENT"},
+static const struct VersionString version_strings[] = {
+    { ELF64_VERSION_NONE, "ELF64_VERSION_NONE" },
+    { ELF64_VERSION_CURRENT, "ELF64_VERSION_CURRENT" },
 };
 
 extern PrimStatus elf64_is_magic_okay(
@@ -89,7 +84,7 @@ extern ELF64_Class elf64_get_class(
     unsigned const char ident[ELF64_IDENT_LEN])
 {
     ELF64_Class class = ELF64_CLASS_NONE;
-    class = (ELF64_Class) ident[ELF64_IDENT_CLASS];
+    class = (ELF64_Class)ident[ELF64_IDENT_CLASS];
     return class;
 }
 
@@ -146,11 +141,10 @@ extern PrimStatus elf64_is_class_code_valid(ELF64_Class class)
  * @return The ELF64 data code contained in the header.
  */
 extern ELF64_Data_Encoding elf64_get_data_encoding(
-    unsigned const char ident[ELF64_IDENT_LEN]
-)
+    unsigned const char ident[ELF64_IDENT_LEN])
 {
     ELF64_Data_Encoding data = ELF64_DATA_NONE;
-    data = (ELF64_Data_Encoding) ident[ELF64_IDENT_DATA];
+    data = (ELF64_Data_Encoding)ident[ELF64_IDENT_DATA];
     return data;
 }
 
@@ -207,11 +201,10 @@ extern PrimStatus elf64_is_data_code_valid(ELF64_Data_Encoding data)
  * @return The ELF64 data encoding.
  */
 extern ELF64_Version elf64_get_version(
-    unsigned const char ident[ELF64_IDENT_LEN]
-)
+    unsigned const char ident[ELF64_IDENT_LEN])
 {
     ELF64_Version version = ELF64_VERSION_NONE;
-    version = (ELF64_Version) ident[ELF64_IDENT_VERSION];
+    version = (ELF64_Version)ident[ELF64_IDENT_VERSION];
     return version;
 }
 

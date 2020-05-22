@@ -34,15 +34,14 @@
  */
 extern PrimStatus prim_fopen(
     const char* path,
-    prim_file_handle* file_handle
-)
+    prim_file_handle* file_handle)
 {
     FILE* native_file = fopen(path, "r");
     if (native_file == NULL)
     {
         return STATUS_BAD_FILE;
     }
-    *file_handle = (prim_file_handle) native_file;
+    *file_handle = (prim_file_handle)native_file;
     return STATUS_OKAY;
 }
 
@@ -59,16 +58,14 @@ extern PrimStatus prim_fread(
     void* destination,
     size_t size,
     size_t count,
-    prim_file_handle file_handle
-)
+    prim_file_handle file_handle)
 {
     size_t read_count = 0;
     read_count = fread(
         destination,
         size,
         count,
-        (FILE*) file_handle
-    );
+        (FILE*)file_handle);
     if (read_count == 0 && count != 0)
     {
         return STATUS_FILE_IO_ERROR;
@@ -86,14 +83,13 @@ extern PrimStatus prim_fread(
  */
 extern PrimStatus prim_fseek(
     prim_file_handle file_handle,
-    const size_t offset
-)
+    const size_t offset)
 {
     int seek_status = 1;
     seek_status = fseek(
-        (FILE*) file_handle,
-         offset,
-    SEEK_SET);
+        (FILE*)file_handle,
+        offset,
+        SEEK_SET);
     if (seek_status != 0)
     {
         return STATUS_FILE_IO_ERROR;

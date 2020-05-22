@@ -11,10 +11,8 @@
 #ifndef FORMAT_ELF64_IDENT_H
 #define FORMAT_ELF64_IDENT_H
 
-
 #include "format/elf64/header.h"
 #include "status.h"
-
 
 /** ELF64 magic number 0. */
 #define ELF64_MAGIC0 0x7f;
@@ -54,7 +52,6 @@
 
 /** Length of the ELF64 ident, including padding. */
 #define ELG64_IDENT_NIDENT 16
-
 
 /** Class values for ELF64 binaries. */
 typedef enum ELF64_Class
@@ -108,8 +105,7 @@ typedef enum ELF64_Version
  *         STATUS_INVALID otherwise.
  */
 extern PrimStatus elf64_is_magic_okay(
-    unsigned const char ident[ELF64_IDENT_LEN]
-);
+    unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
  * Extract the ELF64 class field from the header ident.
@@ -149,8 +145,7 @@ extern PrimStatus elf64_is_class_code_valid(ELF64_Class class);
  * @return The ELF64 data code contained in the header.
  */
 extern ELF64_Data_Encoding elf64_get_data_encoding(
-    unsigned const char ident[ELF64_IDENT_LEN]
-);
+    unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
  * Get a string with a human readable data encoding message.
@@ -178,8 +173,7 @@ extern PrimStatus elf64_is_data_code_valid(ELF64_Data_Encoding data);
  * @return The ELF64 data encoding.
  */
 extern ELF64_Version elf64_get_version(
-    unsigned const char ident[ELF64_IDENT_LEN]
-);
+    unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
  * Get a string with a human readable version encoding message.
