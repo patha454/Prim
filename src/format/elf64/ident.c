@@ -77,6 +77,23 @@ extern PrimStatus elf64_is_magic_okay(
 }
 
 /**
+ * Extract the ELF64 class field from the header ident.
+ * 
+ * @note elf64_get_class does not check the class value is
+ * valid. See `elf64_is_class_code_valid`.
+ * 
+ * @param ident The ELF64 ident header field.
+ * @return The ELF64 ident header value.
+ */
+extern ELF64_Class elf64_get_class(
+    unsigned const char ident[ELF64_IDENT_LEN])
+{
+    ELF64_Class class = ELF64_CLASS_NONE;
+    class = (ELF64_Class) ident[ELF64_IDENT_CLASS];
+    return class;
+}
+
+/**
  * Get a string with a human readable class message.
  *
  * @param class The class to string-ify;
@@ -120,6 +137,24 @@ extern PrimStatus elf64_is_class_code_valid(ELF64_Class class)
 }
 
 /**
+ * Extract the ELF64 data (endianess) code from the header ident.
+ * 
+ * @note elf64_get_data_encoding does not check the code is valid.
+ * @see `elf64_is_data_code_valid`.
+ * 
+ * @param ident The ELF64 ident header field.
+ * @return The ELF64 data code contained in the header.
+ */
+extern ELF64_Data_Encoding elf64_get_data_encoding(
+    unsigned const char ident[ELF64_IDENT_LEN]
+)
+{
+    ELF64_Data_Encoding data = ELF64_DATA_NONE;
+    data = (ELF64_Data_Encoding) ident[ELF64_IDENT_DATA];
+    return data;
+}
+
+/**
  * Get a string with a human readable data encoding message.
  *
  * @param data The class to string-ify;
@@ -160,6 +195,24 @@ extern PrimStatus elf64_is_data_code_valid(ELF64_Data_Encoding data)
         }
     }
     return STATUS_INVALID;
+}
+
+/**
+ * Extract the version field from an ELF64 header ident.
+ * 
+ * @note elf64_get_version does not check if the version
+ * code is valid. See `elf64_is_version_code_valid`.
+ * 
+ * @param ident The ELF64 header ident field.
+ * @return The ELF64 data encoding.
+ */
+extern ELF64_Version elf64_get_version(
+    unsigned const char ident[ELF64_IDENT_LEN]
+)
+{
+    ELF64_Version version = ELF64_VERSION_NONE;
+    version = (ELF64_Version) ident[ELF64_IDENT_VERSION];
+    return version;
 }
 
 /**
