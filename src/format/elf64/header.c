@@ -75,7 +75,7 @@ extern ELF64_Type elf64_get_object_type(
     ELF64_Type type = ELF64_TYPE_NONE;
     type = (ELF64_Type) header->type;
     return type;
-};
+}
 
 /**
  * Get a string with a human readable object type name.
