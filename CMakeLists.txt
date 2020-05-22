@@ -10,6 +10,7 @@ include_directories(include)
 # Declare the prim library target.
 add_library(prim STATIC
     src/status.c
+    src/format/elf64/ident.c
     src/platform/file.c
 )
 
