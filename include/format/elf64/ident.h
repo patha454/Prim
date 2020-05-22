@@ -107,7 +107,7 @@ typedef enum ELF64_Version
  * @return STATUS_OKAY if the magic number is correct,
  *         STATUS_INVALID otherwise.
  */
-extern PrimStatus elf64_ident_is_magic_okay(
+extern PrimStatus elf64_is_magic_okay(
     unsigned const char ident[ELF64_IDENT_LEN]
 );
 

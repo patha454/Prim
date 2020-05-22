@@ -25,7 +25,7 @@ int main()
         exit(EXIT_FAILURE);
     }
     ident = header.ident;
-    status = elf64_ident_is_magic_okay(ident);
+    status = elf64_is_magic_okay(ident);
     printf("ELF64 magic: %s\n", get_status_string(status));
     printf("ELF64 class: %s\n", elf64_get_class_string(ident[ELF64_IDENT_CLASS]));
     printf("ELF64 data (endianess): %s\n", elf64_get_data_string(ident[ELF64_IDENT_CLASS]));
