@@ -39,5 +39,13 @@ int main()
         "ELF64 version: %s\n",
         elf64_get_version_string(elf64_get_version(ident))
     );
+    printf(
+        "ELF64 type: %s\n",
+        elf64_get_type_string(elf64_get_object_type(&header))
+    );
+    printf(
+        "ELF64 machine: %s\n",
+        elf64_get_machine_string(elf64_get_machine(&header))
+    );
     return 0;
 }
