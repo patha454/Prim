@@ -16,12 +16,12 @@
 
 
 /** ELF64 Identification code length. */
-#define IDENT_LEN 16
+#define ELF64_IDENT_LEN 16
 
 typedef struct 
 {
     /** Magic number and machine-independent identification code. */
-    unsigned char ident[IDENT_LEN];
+    unsigned char ident[ELF64_IDENT_LEN];
 
     /** Type of the binary: Executable, core, object... */
     Elf64_Half type;
