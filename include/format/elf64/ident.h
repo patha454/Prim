@@ -108,7 +108,7 @@ typedef enum ELF64_Version
  *         STATUS_INVALID otherwise.
  */
 extern PrimStatus elf64_ident_is_magic_okay(
-    unsigned const char ident[IDENT_LEN]
+    unsigned const char ident[ELF64_IDENT_LEN]
 );
 
 /**

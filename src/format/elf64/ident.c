@@ -59,7 +59,7 @@ static const struct VersionString version_strings[] =
 };
 
 extern PrimStatus elf64_ident_is_magic_okay(
-    unsigned const char ident[IDENT_LEN])
+    unsigned const char ident[ELF64_IDENT_LEN])
 {
     int magic0_okay = 0;
     int magic1_okay = 0;
