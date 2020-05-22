@@ -7,8 +7,8 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install clang-format-11
-      run: sudo apt-get install clang-format-11
+    - name: Install clang-format-19
+      run: sudo apt-get install clang-format-10
     - name: fmt help
       run: clang-format --version && clang-format --help 
     - name: clang-format
