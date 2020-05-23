@@ -28,12 +28,12 @@ int main()
     printf("ELF64 magic: %s\n", get_status_string(status));
     printf("ELF64 class: %s\n", elf64_get_class_string(elf64_get_class(ident)));
     printf("ELF64 data (endianess): %s\n",
-           elf64_get_data_string(elf64_get_data_encoding(ident)));
+        elf64_get_data_string(elf64_get_data_encoding(ident)));
     printf("ELF64 version: %s\n",
-           elf64_get_version_string(elf64_get_version(ident)));
+        elf64_get_version_string(elf64_get_version(ident)));
     printf("ELF64 type: %s\n",
-           elf64_get_type_string(elf64_get_object_type(&header)));
+        elf64_get_type_string(elf64_get_object_type(&header)));
     printf("ELF64 machine: %s\n",
-           elf64_get_machine_string(elf64_get_machine(&header)));
+        elf64_get_machine_string(elf64_get_machine(&header)));
     return 0;
 }

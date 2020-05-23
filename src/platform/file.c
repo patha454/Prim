@@ -53,8 +53,8 @@ extern PrimStatus prim_fopen(const char* path, prim_file_handle* file_handle)
  * @param file_handle File to read into memory.
  * @return STATUS_OKAY on success, otherwise an error code.
  */
-extern PrimStatus prim_fread(void* destination, size_t size, size_t count,
-                             prim_file_handle file_handle)
+extern PrimStatus prim_fread(
+    void* destination, size_t size, size_t count, prim_file_handle file_handle)
 {
     size_t read_count = 0;
     read_count = fread(destination, size, count, (FILE*) file_handle);
