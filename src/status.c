@@ -21,13 +21,12 @@ struct StatusString
 };
 
 /** Maps status strings with human readable names. */
-static const struct StatusString status_strings[] =
-{
-    {STATUS_OKAY,           "STATUS_OKAY"},
-    {STATUS_ERROR,          "STATUS_ERROR"},
-    {STATUS_INVALID,        "STATUS_INVALID"},
-    {STATUS_BAD_FILE,       "STATUS_BAD_FILE"},
-    {STATUS_FILE_IO_ERROR,  "STATUS_FILE_IO_ERROR"},
+static const struct StatusString status_strings[] = {
+    { STATUS_OKAY, "STATUS_OKAY" },
+    { STATUS_ERROR, "STATUS_ERROR" },
+    { STATUS_INVALID, "STATUS_INVALID" },
+    { STATUS_BAD_FILE, "STATUS_BAD_FILE" },
+    { STATUS_FILE_IO_ERROR, "STATUS_FILE_IO_ERROR" },
 };
 
 /**

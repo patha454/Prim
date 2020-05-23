@@ -23,9 +23,7 @@
 #ifndef PLATFORM_TYPES_H
 #define PLATFORM_TYPES_H
 
-
 #include <stdint.h>
-
 
 /** Unsigned 8-bit integer. */
 typedef uint8_t prim_u8;

@@ -11,15 +11,13 @@
 #ifndef FORMAT_ELF64_HEADER_H
 #define FORMAT_ELF64_HEADER_H
 
-
 #include "format/elf64/types.h"
 #include "status.h"
-
 
 /** ELF64 Identification code length. */
 #define ELF64_IDENT_LEN 16
 
-typedef struct 
+typedef struct
 {
     /** Magic number and machine-independent identification code. */
     unsigned char ident[ELF64_IDENT_LEN];

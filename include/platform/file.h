@@ -20,14 +20,11 @@
  * @date May 2020.
  */
 
-
 #ifndef PLATFORM_FILE_H
 #define PLATFORM_FILE_H
 
-
 #include "status.h"
 #include <stdio.h>
-
 
 /** File handle.
  *
@@ -47,8 +44,7 @@ typedef FILE* prim_file_handle;
  */
 extern PrimStatus prim_fopen(
     const char* path,
-    prim_file_handle* file_handle
-);
+    prim_file_handle* file_handle);
 
 /**
  * Read data from a file into memory.
@@ -63,8 +59,7 @@ extern PrimStatus prim_fread(
     void* destination,
     size_t size,
     size_t count,
-    prim_file_handle file_handle
-);
+    prim_file_handle file_handle);
 
 /**
  * Move the file position indicator to a diffrent position
@@ -76,7 +71,6 @@ extern PrimStatus prim_fread(
  */
 extern PrimStatus prim_fseek(
     prim_file_handle file_handle,
-    size_t offset
-);
+    size_t offset);
 
 #endif
