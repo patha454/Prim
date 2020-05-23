@@ -12,8 +12,6 @@ jobs:
         wget -O clang.tar.gz --progress=dot https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
         tar -xf clang.tar.gz
         rm clang.tar.gz
-        mv clang* clang
-    - name: fmt help
-      run: clang/bin/clang-format --version && clang/bin/clang-format --help 
+        mv clang* clang-10
     - name: clang-format
-      run: find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs clang/bin/clang-format -style=file -dry-run -Werror
+      run: find src include -name *.c -or -name *h | xargs clang-10/bin/clang-format -style=file -dry-run -Werror
