@@ -26,20 +26,14 @@ int main()
     ident = header.ident;
     status = elf64_is_magic_okay(ident);
     printf("ELF64 magic: %s\n", get_status_string(status));
-    printf(
-        "ELF64 class: %s\n",
-        elf64_get_class_string(elf64_get_class(ident)));
-    printf(
-        "ELF64 data (endianess): %s\n",
+    printf("ELF64 class: %s\n", elf64_get_class_string(elf64_get_class(ident)));
+    printf("ELF64 data (endianess): %s\n",
         elf64_get_data_string(elf64_get_data_encoding(ident)));
-    printf(
-        "ELF64 version: %s\n",
+    printf("ELF64 version: %s\n",
         elf64_get_version_string(elf64_get_version(ident)));
-    printf(
-        "ELF64 type: %s\n",
+    printf("ELF64 type: %s\n",
         elf64_get_type_string(elf64_get_object_type(&header)));
-    printf(
-        "ELF64 machine: %s\n",
+    printf("ELF64 machine: %s\n",
         elf64_get_machine_string(elf64_get_machine(&header)));
     return 0;
 }

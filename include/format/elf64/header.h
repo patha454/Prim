@@ -1,8 +1,8 @@
 /**
  * @file header.h
- * 
+ *
  * The file header used by the EFL64 binary format.
- * 
+ *
  * @author H Paterson.
  * @copyright BSL-1.0.
  * @date May 2020.
@@ -19,7 +19,8 @@
 
 typedef struct
 {
-    /** Magic number and machine-independent identification code. */
+    /** Magic number and machine-independent identification
+     * code. */
     unsigned char ident[ELF64_IDENT_LEN];
 
     /** Type of the binary: Executable, core, object... */
@@ -155,12 +156,11 @@ typedef enum ELF64_Machine
  * @param A pointer to the ELF64 header.
  * @return The ELF64 object type.
  */
-extern ELF64_Type elf64_get_object_type(
-    const Elf64_Header* header);
+extern ELF64_Type elf64_get_object_type(const Elf64_Header* header);
 
 /**
  * Get a string with a human readable object type name.
- * 
+ *
  * @param type The object type to string-fiy.
  * @return A human readable object type.
  */
@@ -168,27 +168,27 @@ extern const char* elf64_get_type_string(ELF64_Type type);
 
 /**
  * Checks if an ELF64 type is a valid type code.
- * 
+ *
  * @param type A status to test.
- * @return `STATUS_OKAY` if the class is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the class is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_type_valid(ELF64_Type type);
 
 /**
  * Extract the ELF64 machine target from the header.
- * 
+ *
  * @note elf64_get_machine does not check if the machine
  * is valid. See `elf64_is_machine_valid`.
  *
  * @param header Pointer to the ELF64 header.
  * @return The ELF64 machine target.
  */
-extern ELF64_Machine elf64_get_machine(
-    const Elf64_Header* header);
+extern ELF64_Machine elf64_get_machine(const Elf64_Header* header);
 
 /**
  * Get a string with a human readable machine name.
- * 
+ *
  * @param machine The machine to string-fiy.
  * @return A human readable machine mane.
  */
@@ -196,9 +196,10 @@ extern const char* elf64_get_machine_string(ELF64_Machine machine);
 
 /**
  * Checks if an ELF64 machine is a valid machine code.
- * 
+ *
  * @param machine A machine to test.
- * @return `STATUS_OKAY` if the machine is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the machine is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_machine_valid(ELF64_Machine machine);
 

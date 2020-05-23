@@ -1,9 +1,9 @@
 /**
  * @file status.h
- * 
+ *
  * Status codes used to indicate error conditions from
  * Prim operations.
- * 
+ *
  * @author H Paterson.
  * @copyright BSL-1.0.
  * @date May 2020.
@@ -41,7 +41,7 @@ extern const char* get_status_string(PrimStatus status);
 
 /**
  * Checks is a status code is a valid status code.
- * 
+ *
  * @param status A status to test.
  * @return 1 if the status code is valid, 0 otherwise.
  */

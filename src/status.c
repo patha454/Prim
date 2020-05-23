@@ -1,11 +1,11 @@
 /**
  * @file status.c
- * 
+ *
  * Status codes used to indicate error conditions from
  * Prim operations.
- * 
+ *
  * @see status.h
- * 
+ *
  * @author H Paterson.
  * @copyright BSL-1.0.
  * @date May 2020.
@@ -39,9 +39,7 @@ extern const char* get_status_string(const PrimStatus status)
 {
     static const char* const unrecognised_status = "<STATUS_CODE_INVALID>";
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(status_strings) / sizeof(struct StatusString);
-         i++)
+    for (i = 0; i < sizeof(status_strings) / sizeof(struct StatusString); i++)
     {
         if (status_strings[i].code == status)
         {
@@ -53,16 +51,15 @@ extern const char* get_status_string(const PrimStatus status)
 
 /**
  * Checks is a status code is a valid status code.
- * 
+ *
  * @param status A status to test.
- * @return `STATUS_OKAY` if the code is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the code is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus is_status_code_valid(PrimStatus status)
 {
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(status_strings) / sizeof(struct StatusString);
-         i++)
+    for (i = 0; i < sizeof(status_strings) / sizeof(struct StatusString); i++)
     {
         if (status_strings[i].code == status)
         {
