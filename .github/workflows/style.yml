@@ -7,9 +7,11 @@ jobs:
 
     steps:
     - uses: actions/checkout@v2
-    - name: Install clang-format-19
-      run: sudo apt-get install clang-format-10
+    - name: Install clang-10
+      run: |
+        wget -O clang.tar.gz https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
+        tar -xf clang.tar.gz
     - name: fmt help
-      run: clang-format --version && clang-format --help 
+      run: clang/bin/clang-format --version && clang/bin/clang-format --help 
     - name: clang-format
-      run: find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs clang-format -style=file -dry-run -Werror
+      run: find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs clang/bin/clang-format -style=file -dry-run -Werror
