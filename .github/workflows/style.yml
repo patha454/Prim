@@ -10,8 +10,9 @@ jobs:
     - name: Install clang-10
       run: |
         wget -O clang.tar.gz --progress=dot https://github.com/llvm/llvm-project/releases/download/llvmorg-10.0.0/clang+llvm-10.0.0-x86_64-linux-gnu-ubuntu-18.04.tar.xz
-        tar -xvf clang.tar.gz
-        mv "clang+llvm-10*" "clang"
+        tar -xf clang.tar.gz
+        rm clang.tar.gz
+        mv clang* clang
     - name: fmt help
       run: clang/bin/clang-format --version && clang/bin/clang-format --help 
     - name: clang-format
