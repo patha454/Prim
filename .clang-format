@@ -2,7 +2,12 @@
 Language:        Cpp
 BasedOnStyle:  WebKit
 
+AllowAllArgumentsOnNextLine: false
+BinPackArguments: true
+BinPackParameters: true
 BreakBeforeBraces: Allman
+ColumnLimit: 80
+SpaceAfterCStyleCast: true
 
 ...
 

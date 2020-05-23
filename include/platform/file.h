@@ -13,7 +13,7 @@
  * the abstractions in this file and the `file` C source.
  *
  * This version of `file.h` is configured for a hosted C
- * standard library platform. 
+ * standard library platform.
  *
  * @author H Paterson.
  * @copyright BSL-1.0.
@@ -30,7 +30,7 @@
  *
  * @note This typedef must be changed to suit
  * the host platform.
- * 
+ *
  * @see `src/platform/file.c`.
  */
 typedef FILE* prim_file_handle;
@@ -39,12 +39,11 @@ typedef FILE* prim_file_handle;
  * Open the file specified by `path`.
  *
  * @param path Path to a file to open.
- * @param file_handle Location to return a handle to the file.
+ * @param file_handle Location to return a handle to the
+ * file.
  * @return STATUS_OKAY on success, otherwise an error code.
  */
-extern PrimStatus prim_fopen(
-    const char* path,
-    prim_file_handle* file_handle);
+extern PrimStatus prim_fopen(const char* path, prim_file_handle* file_handle);
 
 /**
  * Read data from a file into memory.
@@ -55,22 +54,18 @@ extern PrimStatus prim_fopen(
  * @param file_handle File to read into memory.
  * @return STATUS_OKAY on success, otherwise an error code.
  */
-extern PrimStatus prim_fread(
-    void* destination,
-    size_t size,
-    size_t count,
-    prim_file_handle file_handle);
+extern PrimStatus prim_fread(void* destination, size_t size, size_t count,
+                             prim_file_handle file_handle);
 
 /**
  * Move the file position indicator to a diffrent position
  * in the file.
  *
  * @param file_handle The file handle to seek.
- * @param offset Move to this offset from the start of the file.
+ * @param offset Move to this offset from the start of the
+ * file.
  * @return STATUS_OKAY on success, otherwise an error code.
  */
-extern PrimStatus prim_fseek(
-    prim_file_handle file_handle,
-    size_t offset);
+extern PrimStatus prim_fseek(prim_file_handle file_handle, size_t offset);
 
 #endif

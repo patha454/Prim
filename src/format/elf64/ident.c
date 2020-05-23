@@ -19,14 +19,16 @@ struct ClassString
     const char* const name;
 };
 
-/** Associates an ELF64 data code with a human readable name. */
+/** Associates an ELF64 data code with a human readable
+ * name. */
 struct DataString
 {
     const ELF64_Data_Encoding data;
     const char* const name;
 };
 
-/** Associates an ELF64 version code with a human readable name. */
+/** Associates an ELF64 version code with a human readable
+ * name. */
 struct VersionString
 {
     const ELF64_Version version;
@@ -53,8 +55,8 @@ static const struct VersionString version_strings[] = {
     { ELF64_VERSION_CURRENT, "ELF64_VERSION_CURRENT" },
 };
 
-extern PrimStatus elf64_is_magic_okay(
-    unsigned const char ident[ELF64_IDENT_LEN])
+extern PrimStatus
+elf64_is_magic_okay(unsigned const char ident[ELF64_IDENT_LEN])
 {
     int magic0_okay = 0;
     int magic1_okay = 0;
@@ -73,18 +75,17 @@ extern PrimStatus elf64_is_magic_okay(
 
 /**
  * Extract the ELF64 class field from the header ident.
- * 
+ *
  * @note elf64_get_class does not check the class value is
  * valid. See `elf64_is_class_code_valid`.
- * 
+ *
  * @param ident The ELF64 ident header field.
  * @return The ELF64 ident header value.
  */
-extern ELF64_Class elf64_get_class(
-    unsigned const char ident[ELF64_IDENT_LEN])
+extern ELF64_Class elf64_get_class(unsigned const char ident[ELF64_IDENT_LEN])
 {
     ELF64_Class class = ELF64_CLASS_NONE;
-    class = (ELF64_Class)ident[ELF64_IDENT_CLASS];
+    class = (ELF64_Class) ident[ELF64_IDENT_CLASS];
     return class;
 }
 
@@ -98,9 +99,7 @@ extern const char* elf64_get_class_string(const ELF64_Class class)
 {
     static const char* const unrecognised_class = "<ELF64_CLASS_CODE_INVALID>";
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(class_strings) / sizeof(struct ClassString);
-         i++)
+    for (i = 0; i < sizeof(class_strings) / sizeof(struct ClassString); i++)
     {
         if (class_strings[i].class == class)
         {
@@ -112,16 +111,15 @@ extern const char* elf64_get_class_string(const ELF64_Class class)
 
 /**
  * Checks if an ELF64 class is a valid class code.
- * 
+ *
  * @param class A status to test.
- * @return `STATUS_OKAY` if the class is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the class is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_class_code_valid(ELF64_Class class)
 {
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(class_strings) / sizeof(struct ClassString);
-         i++)
+    for (i = 0; i < sizeof(class_strings) / sizeof(struct ClassString); i++)
     {
         if (class_strings[i].class == class)
         {
@@ -132,19 +130,21 @@ extern PrimStatus elf64_is_class_code_valid(ELF64_Class class)
 }
 
 /**
- * Extract the ELF64 data (endianess) code from the header ident.
- * 
- * @note elf64_get_data_encoding does not check the code is valid.
+ * Extract the ELF64 data (endianess) code from the header
+ * ident.
+ *
+ * @note elf64_get_data_encoding does not check the code is
+ * valid.
  * @see `elf64_is_data_code_valid`.
- * 
+ *
  * @param ident The ELF64 ident header field.
  * @return The ELF64 data code contained in the header.
  */
-extern ELF64_Data_Encoding elf64_get_data_encoding(
-    unsigned const char ident[ELF64_IDENT_LEN])
+extern ELF64_Data_Encoding
+elf64_get_data_encoding(unsigned const char ident[ELF64_IDENT_LEN])
 {
     ELF64_Data_Encoding data = ELF64_DATA_NONE;
-    data = (ELF64_Data_Encoding)ident[ELF64_IDENT_DATA];
+    data = (ELF64_Data_Encoding) ident[ELF64_IDENT_DATA];
     return data;
 }
 
@@ -158,9 +158,7 @@ extern const char* elf64_get_data_string(const ELF64_Data_Encoding data)
 {
     static const char* const unrecognised_data = "<ELF64_DATA_CODE_INVALID>";
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(data_strings) / sizeof(struct DataString);
-         i++)
+    for (i = 0; i < sizeof(data_strings) / sizeof(struct DataString); i++)
     {
         if (data_strings[i].data == data)
         {
@@ -172,16 +170,15 @@ extern const char* elf64_get_data_string(const ELF64_Data_Encoding data)
 
 /**
  * Checks if an ELF64 data encoding is a valid data code.
- * 
+ *
  * @param data A data code to test.
- * @return `STATUS_OKAY` if the data code is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the data code is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_data_code_valid(ELF64_Data_Encoding data)
 {
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(data_strings) / sizeof(struct DataString);
-         i++)
+    for (i = 0; i < sizeof(data_strings) / sizeof(struct DataString); i++)
     {
         if (data_strings[i].data == data)
         {
@@ -193,34 +190,34 @@ extern PrimStatus elf64_is_data_code_valid(ELF64_Data_Encoding data)
 
 /**
  * Extract the version field from an ELF64 header ident.
- * 
+ *
  * @note elf64_get_version does not check if the version
  * code is valid. See `elf64_is_version_code_valid`.
- * 
+ *
  * @param ident The ELF64 header ident field.
  * @return The ELF64 data encoding.
  */
-extern ELF64_Version elf64_get_version(
-    unsigned const char ident[ELF64_IDENT_LEN])
+extern ELF64_Version
+elf64_get_version(unsigned const char ident[ELF64_IDENT_LEN])
 {
     ELF64_Version version = ELF64_VERSION_NONE;
-    version = (ELF64_Version)ident[ELF64_IDENT_VERSION];
+    version = (ELF64_Version) ident[ELF64_IDENT_VERSION];
     return version;
 }
 
 /**
- * Get a string with a human readable version encoding message.
+ * Get a string with a human readable version encoding
+ * message.
  *
  * @param version The version to string-ify;
  * @return A human readable version string.
  */
 extern const char* elf64_get_version_string(const ELF64_Version version)
 {
-    static const char* const unrecognised_version = "<ELF64_VERSION_CODE_INVALID>";
+    static const char* const unrecognised_version
+        = "<ELF64_VERSION_CODE_INVALID>";
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(version_strings) / sizeof(struct VersionString);
-         i++)
+    for (i = 0; i < sizeof(version_strings) / sizeof(struct VersionString); i++)
     {
         if (version_strings[i].version == version)
         {
@@ -231,17 +228,17 @@ extern const char* elf64_get_version_string(const ELF64_Version version)
 }
 
 /**
- * Checks if an ELF64 version encoding is a valid version code.
- * 
+ * Checks if an ELF64 version encoding is a valid version
+ * code.
+ *
  * @param version A version code to test.
- * @return `STATUS_OKAY` if the version code is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the version code is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_version_code_valid(ELF64_Version version)
 {
     unsigned int i = 0;
-    for (i = 0;
-         i < sizeof(version_strings) / sizeof(struct VersionString);
-         i++)
+    for (i = 0; i < sizeof(version_strings) / sizeof(struct VersionString); i++)
     {
         if (version_strings[i].version == version)
         {

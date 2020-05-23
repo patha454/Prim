@@ -1,8 +1,8 @@
 /**
  * @file include/format/elf64/ident.h
- * 
+ *
  * Header ident field information used by ELF64 binaries.
- * 
+ *
  * @author H Paterson.
  * @copyright BSL-1.0.
  * @date May 2020.
@@ -61,8 +61,9 @@ typedef enum ELF64_Class
 
     /**
      * 32-bit class.
-     * 
-     * @note `ELF_CLASS_32BIT` should never be used in ELF64.
+     *
+     * @note `ELF_CLASS_32BIT` should never be used in
+     * ELF64.
      */
     ELF64_CLASS_32BIT = 1,
 
@@ -104,20 +105,19 @@ typedef enum ELF64_Version
  * @return STATUS_OKAY if the magic number is correct,
  *         STATUS_INVALID otherwise.
  */
-extern PrimStatus elf64_is_magic_okay(
-    unsigned const char ident[ELF64_IDENT_LEN]);
+extern PrimStatus
+elf64_is_magic_okay(unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
  * Extract the ELF64 class field from the header ident.
- * 
+ *
  * @note elf64_get_class does not check the class value is
  * valid. See `elf64_is_class_code_valid`.
- * 
+ *
  * @param ident The ELF64 ident header field.
  * @return The ELF64 ident header value.
  */
-extern ELF64_Class elf64_get_class(
-    unsigned const char ident[ELF64_IDENT_LEN]);
+extern ELF64_Class elf64_get_class(unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
  * Get a string with a human readable class message.
@@ -129,23 +129,26 @@ extern const char* elf64_get_class_string(ELF64_Class class);
 
 /**
  * Checks if an ELF64 class is a valid class code.
- * 
+ *
  * @param class A class code to test.
- * @return `STATUS_OKAY` if the class is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the class is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_class_code_valid(ELF64_Class class);
 
 /**
- * Extract the ELF64 data (endianess) code from the header ident.
- * 
- * @note elf64_get_data_encoding does not check the code is valid.
+ * Extract the ELF64 data (endianess) code from the header
+ * ident.
+ *
+ * @note elf64_get_data_encoding does not check the code is
+ * valid.
  * @see `elf64_is_data_code_valid`.
- * 
+ *
  * @param ident The ELF64 ident header field.
  * @return The ELF64 data code contained in the header.
  */
-extern ELF64_Data_Encoding elf64_get_data_encoding(
-    unsigned const char ident[ELF64_IDENT_LEN]);
+extern ELF64_Data_Encoding
+elf64_get_data_encoding(unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
  * Get a string with a human readable data encoding message.
@@ -157,26 +160,28 @@ extern const char* elf64_get_data_string(ELF64_Data_Encoding data);
 
 /**
  * Checks if an ELF64 data encoding is a valid data code.
- * 
+ *
  * @param data A data code to test.
- * @return `STATUS_OKAY` if the data code is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the data code is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_data_code_valid(ELF64_Data_Encoding data);
 
 /**
  * Extract the version field from an ELF64 header ident.
- * 
+ *
  * @note elf64_get_version does not check if the version
  * code is valid. See `elf64_is_version_code_valid`.
- * 
+ *
  * @param ident The ELF64 header ident field.
  * @return The ELF64 data encoding.
  */
-extern ELF64_Version elf64_get_version(
-    unsigned const char ident[ELF64_IDENT_LEN]);
+extern ELF64_Version
+elf64_get_version(unsigned const char ident[ELF64_IDENT_LEN]);
 
 /**
- * Get a string with a human readable version encoding message.
+ * Get a string with a human readable version encoding
+ * message.
  *
  * @param version The version to string-ify;
  * @return A human readable version string.
@@ -184,10 +189,12 @@ extern ELF64_Version elf64_get_version(
 extern const char* elf64_get_version_string(ELF64_Version version);
 
 /**
- * Checks if an ELF64 version encoding is a valid version code.
- * 
+ * Checks if an ELF64 version encoding is a valid version
+ * code.
+ *
  * @param version A version code to test.
- * @return `STATUS_OKAY` if the version code is valid, `STATUS_INVALID` otherwise.
+ * @return `STATUS_OKAY` if the version code is valid,
+ * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_version_code_valid(ELF64_Version version);
 

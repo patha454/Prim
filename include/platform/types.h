@@ -14,7 +14,7 @@
  *
  * This version of `types.h` is configured for a Unix
  * userspace, using the C99 `stdint.h` header.
- * 
+ *
  * @author H Paterson.
  * @copyright BSL-1.0.
  * @date May 2020.
