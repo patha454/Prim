@@ -1,3 +1,4 @@
+![Style](https://github.com/patha454/Prim/workflows/Style/badge.svg?branch=master)
 ![Lint](https://github.com/patha454/Prim/workflows/Lint/badge.svg?branch=master)
 ![Build](https://github.com/patha454/Prim/workflows/Build/badge.svg?branch=master)
 
