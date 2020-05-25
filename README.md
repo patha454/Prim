@@ -23,7 +23,7 @@ Prim expects all code contributions to pass Continuous Integration (CI) testing 
 
 ## Style Checking
 
-You can check your code is formated to meets our style guide using:
+You can check your code is formatted to meets our style guide using:
 
 ```sh
 $ find src include -name *.h -o -name *.c | xargs clang-format --style=file -dry-run -Werror
@@ -39,7 +39,7 @@ $ clang-format --style=file -i file/to/format
 ```sh
 $ find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs -i clang-tidy --config="" {} -- -Iinclude
 ```
-`clang-tidy` should produce no errors or warnings (suppressed warning from non-user code are okay), returning status code 0.
+`clang-tidy` should produce no errors or warnings (suppressed warning from non-user code are okay,) returning status code 0.
 
 ## Building
 ```sh
