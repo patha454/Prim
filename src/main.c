@@ -5,13 +5,18 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-int main()
+int main(int argc, char* argv[])
 {
     prim_file_handle handle = NULL;
     PrimStatus status = STATUS_ERROR;
     Elf64_Header header = { 0 };
     unsigned char* ident = NULL;
-    status = prim_fopen("build/prim", &handle);
+    if (argc < 2)
+    {
+        printf("Usage: prim <file>\n");
+        exit(EXIT_FAILURE);
+    }
+    status = prim_fopen(argv[1], &handle);
     if (status != STATUS_OKAY)
     {
         printf("Open failed: %s\n", get_status_string(status));
