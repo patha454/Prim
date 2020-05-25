@@ -44,7 +44,7 @@ $ find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs -i clang-tidy --con
 ## Building
 ```sh
 $ mkdir build
-$ CFLAGS='-W -Wall -Wextra -pedantic -std=c99` cmake -B build .
+$ CFLAGS='-W -Wall -Wextra -Wpedantic -std=c99` cmake -B build .
 $ cmake --build build [-j8]
 ```
 Your code should compile under GCC or Clang with strict C99 errors enabled.
