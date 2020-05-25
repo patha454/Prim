@@ -35,5 +35,22 @@ int main()
         elf64_get_type_string(elf64_get_object_type(&header)));
     printf("ELF64 machine: %s\n",
         elf64_get_machine_string(elf64_get_machine(&header)));
+    printf(
+        "ELF64 reported header size: 0x%x\n", elf64_get_header_size(&header));
+    printf("ELF64 CPU specific flags: 0x%x\n", elf64_get_flags(&header));
+    printf("ELF64 entry address: 0x%lx\n", elf64_get_entry_address(&header));
+    printf(
+        "ELF64 segment header offset: 0x%lx\n", elf64_get_ph_offset(&header));
+    printf(
+        "ELF64 segment header size: 0x%x\n", elf64_get_ph_entry_size(&header));
+    printf("ELF64 segment count: 0x%x\n", elf64_get_ph_entry_count(&header));
+    printf(
+        "ELF64 section header offset: 0x%lx\n", elf64_get_sh_offset(&header));
+    printf(
+        "ELF64 section header size: 0x%x\n", elf64_get_sh_entry_size(&header));
+    printf("ELF64 section header count: 0x%x\n",
+        elf64_get_sh_entry_count(&header));
+    printf("ELF64 section name secion header index: 0x%x\n",
+        elf64_get_shstr_index(&header));
     return 0;
 }
