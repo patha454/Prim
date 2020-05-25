@@ -37,7 +37,7 @@ $ clang-format --style=file -i file/to/format
 
 ## Linting
 ```sh
-$ find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs -i clang-tidy --config="" {} -- -Iinclude
+$ find src include -name *.c -o -name *.h | xargs -i clang-tidy --config="" {} -- -Iinclude
 ```
 `clang-tidy` should produce no errors or warnings (suppressed warning from non-user code are okay,) returning status code 0.
 
