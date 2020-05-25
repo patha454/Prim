@@ -17,6 +17,38 @@ Prim$ cmake --build build
 
 The build can be customized and controlled through standard Cmake configuration and options.
 
+# Contributing
+
+Prim expects all code contributions to pass Continuous Integration (CI) testing which enforces code style and correctness. We recommend you save time by checking your code meets our standards before pushing it. You can use the following commands to check code your code.
+
+## Style Checking
+
+You can check your code is formatted to meets our style guide using:
+
+```sh
+$ find src include -name *.h -o -name *.c | xargs clang-format --style=file -dry-run -Werror
+```
+`clang-format` should produce no errors, returning status code 0.
+
+You can automatically reformat any problematic files to meet our style guide using:
+```sh
+$ clang-format --style=file -i file/to/format
+```
+
+## Linting
+```sh
+$ find . -path "*/src/*.c" -or -path "*/include/*.h" | xargs -i clang-tidy --config="" {} -- -Iinclude
+```
+`clang-tidy` should produce no errors or warnings (suppressed warning from non-user code are okay,) returning status code 0.
+
+## Building
+```sh
+$ mkdir build
+$ CFLAGS='-W -Wall -Wextra -pedantic -std=c99` cmake -B build .
+$ cmake --build build [-j8]
+```
+Your code should compile under GCC or Clang with strict C99 errors enabled.
+
 # Objectives
 
 Prim initially aims to support loading statically linked ELF64 executable, from userspace, on a Linux x86-64 machine.
