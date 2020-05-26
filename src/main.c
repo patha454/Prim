@@ -1,15 +1,42 @@
 #include "format/elf64/header.h"
 #include "format/elf64/ident.h"
+#include "format/elf64/section.h"
 #include "platform/file.h"
 #include "status.h"
 #include <stdio.h>
 #include <stdlib.h>
+
+/**
+ * Prints an ELF64 sections data to the standard out.
+ *
+ * @param header The ELF64 section header to print.
+ */
+extern void elf64_print_section_info(const ELF64_Section_Header* header)
+{
+    printf("--- ELF64 Section Header ---\n");
+    printf("ELF64 section type: %s\n",
+        elf64_get_section_type_string(elf64_get_section_type(header)));
+    printf("ELF64 section flags: 0x%lx\n", elf64_get_section_flags(header));
+    printf("ELF64 section load address: 0x%lx\n",
+        elf64_get_section_address(header));
+    printf("ELF64 section offset: 0x%lx\n", elf64_get_section_offset(header));
+    printf("ELF64 section size: 0x%lx\n", elf64_get_section_size(header));
+    printf("ELF64 section link table index: 0x%x\n",
+        elf64_get_section_link_table_index(header));
+    printf("ELF64 section extra info: 0x%x\n",
+        elf64_get_section_extra_info(header));
+    printf("ELF64 section alignment restriction: 0x%lx\n",
+        elf64_get_section_alignment(header));
+    printf("ELF64 section fixed entry size: 0x%lx\n",
+        elf64_get_section_entry_size(header));
+}
 
 int main(int argc, char* argv[])
 {
     prim_file_handle handle = NULL;
     PrimStatus status = STATUS_ERROR;
     Elf64_Header header = { 0 };
+    ELF64_Section_Header section_header = { 0 };
     unsigned char* ident = NULL;
     if (argc < 2)
     {
@@ -57,5 +84,27 @@ int main(int argc, char* argv[])
         elf64_get_sh_entry_count(&header));
     printf("ELF64 section name secion header index: 0x%x\n",
         elf64_get_shstr_index(&header));
+    for (int section = 0; section < elf64_get_sh_entry_count(&header);
+         section++)
+    {
+        status = prim_fseek(handle,
+            section * sizeof(ELF64_Section_Header)
+                + elf64_get_sh_offset(&header));
+        if (status != STATUS_OKAY)
+        {
+            printf("ELF64 section header seek failed: %s\n",
+                get_status_string(status));
+            exit(EXIT_FAILURE);
+        }
+        status = prim_fread(
+            &section_header, sizeof(ELF64_Section_Header), 1, handle);
+        if (status != STATUS_OKAY)
+        {
+            printf("ELF64 section header read failed: %s\n",
+                get_status_string(status));
+            exit(EXIT_FAILURE);
+        }
+        elf64_print_section_info(&section_header);
+    }
     return 0;
 }

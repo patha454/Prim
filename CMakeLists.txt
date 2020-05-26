@@ -12,6 +12,7 @@ add_library(prim STATIC
     src/status.c
     src/format/elf64/header.c
     src/format/elf64/ident.c
+    src/format/elf64/section.c
     src/platform/file.c
 )
 
