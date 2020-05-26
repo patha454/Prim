@@ -1,6 +1,10 @@
-#include "format/elf64/header.h"
-#include "format/elf64/ident.h"
-#include "format/elf64/section.h"
+#include "format/elf64/header/header.h"
+#include "format/elf64/header/ident.h"
+#include "format/elf64/header/machine.h"
+#include "format/elf64/header/type.h"
+#include "format/elf64/section/flags.h"
+#include "format/elf64/section/header.h"
+#include "format/elf64/section/type.h"
 #include "platform/file.h"
 #include "status.h"
 #include <stdio.h>

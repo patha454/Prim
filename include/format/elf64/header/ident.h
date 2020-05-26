@@ -1,5 +1,5 @@
 /**
- * @file include/format/elf64/ident.h
+ * @file include/format/elf64/header/ident.h
  *
  * Header ident field information used by ELF64 binaries.
  *
@@ -8,10 +8,10 @@
  * @date May 2020.
  */
 
-#ifndef FORMAT_ELF64_IDENT_H
-#define FORMAT_ELF64_IDENT_H
+#ifndef FORMAT_ELF64_HEADER_IDENT_H
+#define FORMAT_ELF64_HEADER_IDENT_H
 
-#include "format/elf64/header.h"
+#include "format/elf64/header/header.h"
 #include "status.h"
 
 /** ELF64 magic number 0. */
