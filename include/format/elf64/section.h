@@ -140,8 +140,7 @@ typedef Elf64_Xword ELF64_Section_Flag;
  * @param A pointer to the ELF64 section header.
  * @return The ELF64 object type.
  */
-extern Elf64_Word elf64_get_section_name(
-    const ELF64_Section_Header* header);
+extern Elf64_Word elf64_get_section_name(const ELF64_Section_Header* header);
 
 /**
  * Extract the ELF64 section type from a section header.
