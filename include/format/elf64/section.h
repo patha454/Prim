@@ -132,6 +132,17 @@ typedef Elf64_Xword ELF64_Section_Flag;
 #define ELF64_SECTION_FLAG_MASK_PROC 0xf0000000
 
 /**
+ * Extract the ELF64 section name index.
+ *
+ * @note `elf64_get_section_name` returns in index into the section header
+ * name string table, not the string name.
+ *
+ * @param A pointer to the ELF64 section header.
+ * @return The ELF64 object type.
+ */
+extern Elf64_Word elf64_get_section_name(const ELF64_Section_Header* header);
+
+/**
  * Extract the ELF64 section type from a section header.
  *
  * @note elf64_get_section_type does not check if the value
