@@ -27,7 +27,8 @@ struct TypeString
 
 /**
  * Associates an ELF64 machine with a human readable
- * string. */
+ * string.
+ */
 struct MachineString
 {
     const ELF64_Machine machine;
