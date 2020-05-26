@@ -55,7 +55,12 @@ extern ELF64_Type elf64_parse_object_type(const Elf64_Half type)
 extern const char* elf64_get_type_string(const ELF64_Type type)
 {
     static const char* const unrecognised_type = "<ELF64_TYPE_CODE_INVALID>";
+    static const char* const proc_defined = "ELF64_TYPE_PROC_DEFINED";
     unsigned int i = 0;
+    if (type >= ELF64_TYPE_LOPROC && type <= ELF64_TYPE_HIPROC)
+    {
+        return proc_defined;
+    }
     for (i = 0; i < sizeof(type_strings) / sizeof(struct TypeString); i++)
     {
         if (type_strings[i].type == type)
@@ -76,6 +81,10 @@ extern const char* elf64_get_type_string(const ELF64_Type type)
 extern PrimStatus elf64_is_type_valid(ELF64_Type type)
 {
     unsigned int i = 0;
+    if (type >= ELF64_TYPE_LOPROC && type <= ELF64_TYPE_HIPROC)
+    {
+        return STATUS_OKAY;
+    }
     for (i = 0; i < sizeof(type_strings) / sizeof(struct TypeString); i++)
     {
         if (type_strings[i].type == type)
