@@ -67,7 +67,17 @@ extern const char* elf64_get_section_type_string(const ELF64_Section_Type type)
 {
     static const char* const unrecognised_type
         = "<ELF64_SECTION_TYPE_CODE_INVALID>";
+    static const char* const proc_range = "ELF64_SECTION_TYPE_PROC_DEFINED";
+    static const char* const user_range = "ELF64_SECTION_TYPE_USER_DEFINED";
     unsigned int i = 0;
+    if (type >= ELF64_SECTION_TYPE_LOPROC && type <= ELF64_SECTION_TYPE_HIPROC)
+    {
+        return proc_range;
+    }
+    if (type >= ELF64_SECTION_TYPE_LOUSER && type <= ELF64_SECTION_TYPE_HIUSER)
+    {
+        return user_range;
+    }
     for (i = 0; i < sizeof(type_strings) / sizeof(struct TypeString); i++)
     {
         if (type_strings[i].type == type)
@@ -88,6 +98,14 @@ extern const char* elf64_get_section_type_string(const ELF64_Section_Type type)
 extern PrimStatus elf64_is_section_type_valid(ELF64_Section_Type type)
 {
     unsigned int i = 0;
+    if (type >= ELF64_SECTION_TYPE_LOPROC && type <= ELF64_SECTION_TYPE_HIPROC)
+    {
+        return STATUS_OKAY;
+    }
+    if (type >= ELF64_SECTION_TYPE_LOUSER && type <= ELF64_SECTION_TYPE_HIUSER)
+    {
+        return STATUS_OKAY;
+    }
     for (i = 0; i < sizeof(type_strings) / sizeof(struct TypeString); i++)
     {
         if (type_strings[i].type == type)
