@@ -250,11 +250,4 @@ extern Elf64_Xword elf64_get_section_alignment(
 extern Elf64_Xword elf64_get_section_entry_size(
     const ELF64_Section_Header* header);
 
-/**
- * Prints an ELF64 sections data to the standard out.
- *
- * @param header The ELF64 section header to print.
- */
-extern void elf64_print_section_info(const ELF64_Section_Header* header);
-
 #endif
