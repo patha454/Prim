@@ -8,8 +8,8 @@
  * @date May 2020
  */
 
-#include "format/elf64/type.h"
-#include "format/elf64/header.h"
+#include "format/elf64/header/type.h"
+#include "format/elf64/header/header.h"
 
 /**
  * Associates an ELF64 type with a human readable string.

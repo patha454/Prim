@@ -1,5 +1,5 @@
 /**
- * @file include/format/elf64/type.h
+ * @file include/format/elf64/header/type.h
  *
  * Provides access to the type field in the ELF64 header.
  *
@@ -8,10 +8,10 @@
  * @date May 2020.
  */
 
-#ifndef FORMAT_ELF64_TYPE_H
-#define FORMAT_ELF64_TYPE_H
+#ifndef FORMAT_ELF64_HEADER_TYPE_H
+#define FORMAT_ELF64_HEADER_TYPE_H
 
-#include "format/elf64/header.h"
+#include "format/elf64/header/header.h"
 
 /** Object file type encoding for ELF64 binaries. */
 typedef enum ELF64_Type

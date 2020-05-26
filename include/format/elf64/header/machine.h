@@ -1,5 +1,5 @@
 /**
- * @file include/format/elf64/machine.h
+ * @file include/format/elf64/header/machine.h
  *
  * Provides access to the machine field in the ELF64 header.
  *
@@ -8,10 +8,10 @@
  * @date May 2020.
  */
 
-#ifndef FORMAT_ELF64_MACHINE_H
-#define FORMAT_ELF64_MACHINE_H
+#ifndef FORMAT_ELF64_HEADER_MACHINE_H
+#define FORMAT_ELF64_HEADER_MACHINE_H
 
-#include "format/elf64/header.h"
+#include "format/elf64/header/header.h"
 
 /** Machine type encoding for ELF64 binaries. */
 typedef enum ELF64_Machine

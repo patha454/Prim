@@ -1,5 +1,5 @@
 /**
- * @file src/format/elf64/header.c
+ * @file src/format/elf64/header/header.c
  *
  * Header format information for the ELF64 binaries.
  *
@@ -13,7 +13,7 @@
  * @date May 2020.
  */
 
-#include "format/elf64/header.h"
+#include "format/elf64/header/header.h"
 #include "status.h"
 
 /**

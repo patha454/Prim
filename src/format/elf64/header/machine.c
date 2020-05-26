@@ -8,8 +8,8 @@
  * @date May 2020.
  */
 
-#include "format/elf64/machine.h"
-#include "format/elf64/header.h"
+#include "format/elf64/header/machine.h"
+#include "format/elf64/header/header.h"
 
 /**
  * Associates an ELF64 machine with a human readable

@@ -8,8 +8,8 @@
  * @date May 2020.
  */
 
-#include "format/elf64/ident.h"
-#include "format/elf64/header.h"
+#include "format/elf64/header/ident.h"
+#include "format/elf64/header/header.h"
 #include "status.h"
 
 /** Associates an ELF64 class with a human readable name. */
