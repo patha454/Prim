@@ -11,7 +11,8 @@
 #ifndef FORMAT_ELF64_HEADER_TYPE_H
 #define FORMAT_ELF64_HEADER_TYPE_H
 
-#include "format/elf64/header/header.h"
+#include "format/elf64/types.h"
+#include "status.h"
 
 /** Object file type encoding for ELF64 binaries. */
 typedef enum ELF64_Type
@@ -39,7 +40,7 @@ typedef enum ELF64_Type
 } ELF64_Type;
 
 /**
- * Extract the ELF64 object type from the header.
+ * Parse an ELF64 half-word into an object type.
  *
  * @note elf64_get_object_type does not check if the value
  * is valid. See `elf64_is_object_type_valid`.
@@ -47,7 +48,7 @@ typedef enum ELF64_Type
  * @param A pointer to the ELF64 header.
  * @return The ELF64 object type.
  */
-extern ELF64_Type elf64_get_object_type(const Elf64_Header* header);
+extern ELF64_Type elf64_parse_object_type(Elf64_Half type);
 
 /**
  * Get a string with a human readable object type name.

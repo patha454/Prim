@@ -11,8 +11,10 @@
 #ifndef FORMAT_ELF64_HEADER_IDENT_H
 #define FORMAT_ELF64_HEADER_IDENT_H
 
-#include "format/elf64/header/header.h"
 #include "status.h"
+
+/** ELF64 Identification code length. */
+#define ELF64_IDENT_LEN 16
 
 /** ELF64 magic number 0. */
 #define ELF64_MAGIC0 0x7f;

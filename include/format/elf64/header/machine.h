@@ -11,7 +11,8 @@
 #ifndef FORMAT_ELF64_HEADER_MACHINE_H
 #define FORMAT_ELF64_HEADER_MACHINE_H
 
-#include "format/elf64/header/header.h"
+#include "format/elf64/types.h"
+#include "status.h"
 
 /** Machine type encoding for ELF64 binaries. */
 typedef enum ELF64_Machine
@@ -72,7 +73,7 @@ typedef enum ELF64_Machine
 } ELF64_Machine;
 
 /**
- * Extract the ELF64 machine target from the header.
+ * Parse the machine code from the header.
  *
  * @note elf64_get_machine does not check if the machine
  * is valid. See `elf64_is_machine_valid`.
@@ -80,7 +81,7 @@ typedef enum ELF64_Machine
  * @param header Pointer to the ELF64 header.
  * @return The ELF64 machine target.
  */
-extern ELF64_Machine elf64_get_machine(const Elf64_Header* header);
+extern ELF64_Machine elf64_parse_machine(Elf64_Half machine);
 
 /**
  * Get a string with a human readable machine name.

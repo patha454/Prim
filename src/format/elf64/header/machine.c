@@ -9,7 +9,6 @@
  */
 
 #include "format/elf64/header/machine.h"
-#include "format/elf64/header/header.h"
 
 /**
  * Associates an ELF64 machine with a human readable
@@ -44,19 +43,18 @@ static const struct MachineString machine_strings[] = {
 };
 
 /**
- * Extract the ELF64 machine target from the header.
+ * Parse the machine code from the header.
  *
  * @note elf64_get_machine does not check if the machine
  * is valid. See `elf64_is_machine_valid`.
  *
- * @param header Pointer to the ELF64 header.
+ * @param machine Raw machine code to parse.
  * @return The ELF64 machine target.
  */
-extern ELF64_Machine elf64_get_machine(const Elf64_Header* const header)
+extern ELF64_Machine elf64_parse_machine(const Elf64_Half machine)
 {
-    ELF64_Machine machine = ELF64_MACHINE_NONE;
-    machine = (ELF64_Machine) header->machine;
-    return machine;
+    ELF64_Machine machine_ = (ELF64_Machine) machine;
+    return machine_;
 }
 
 /**

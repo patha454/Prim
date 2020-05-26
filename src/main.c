@@ -69,9 +69,9 @@ int main(int argc, char* argv[])
     printf("ELF64 version: %s\n",
         elf64_get_version_string(elf64_get_version(ident)));
     printf("ELF64 type: %s\n",
-        elf64_get_type_string(elf64_get_object_type(&header)));
+        elf64_get_type_string(elf64_parse_object_type(header.type)));
     printf("ELF64 machine: %s\n",
-        elf64_get_machine_string(elf64_get_machine(&header)));
+        elf64_get_machine_string(elf64_parse_machine(header.machine)));
     printf(
         "ELF64 reported header size: 0x%x\n", elf64_get_header_size(&header));
     printf("ELF64 CPU specific flags: 0x%x\n", elf64_get_flags(&header));
