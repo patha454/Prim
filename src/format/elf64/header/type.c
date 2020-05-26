@@ -9,7 +9,6 @@
  */
 
 #include "format/elf64/header/type.h"
-#include "format/elf64/header/header.h"
 
 /**
  * Associates an ELF64 type with a human readable string.
@@ -32,7 +31,7 @@ static const struct TypeString type_strings[] = {
 };
 
 /**
- * Extract the ELF64 object type from the header.
+ * Parse an ELF64 half-word into an object type.
  *
  * @note elf64_get_object_type does not check if the value
  * is valid. See `elf64_is_object_type_valid`.
@@ -40,11 +39,11 @@ static const struct TypeString type_strings[] = {
  * @param A pointer to the ELF64 header.
  * @return The ELF64 object type.
  */
-extern ELF64_Type elf64_get_object_type(const Elf64_Header* const header)
+extern ELF64_Type elf64_parse_object_type(const Elf64_Half type)
 {
-    ELF64_Type type = ELF64_TYPE_NONE;
-    type = (ELF64_Type) header->type;
-    return type;
+    ELF64_Type type_ = ELF64_TYPE_NONE;
+    type_ = (ELF64_Type) type;
+    return type_;
 }
 
 /**
