@@ -194,7 +194,8 @@ extern PrimStatus elf64_is_section_flag_valid(ELF64_Section_Flag flag);
  * @param header The ELF64 section header to read.
  * @return The address to load the section into.
  */
-extern Elf64_Address elf64_get_section_address(ELF64_Section_Header* header);
+extern Elf64_Address elf64_get_section_address(
+    const ELF64_Section_Header* header);
 
 /**
  * Get the offset to section data in an ELF64 binary.
@@ -202,7 +203,8 @@ extern Elf64_Address elf64_get_section_address(ELF64_Section_Header* header);
  * @param header The ELF64 section header to read.
  * @return The offset for the data the heder refers to.
  */
-extern Elf64_Offset elf64_get_section_offset(ELF64_Section_Header* header);
+extern Elf64_Offset elf64_get_section_offset(
+    const ELF64_Section_Header* header);
 
 /**
  * Get the length of an ELF64 section's data.
@@ -210,7 +212,7 @@ extern Elf64_Offset elf64_get_section_offset(ELF64_Section_Header* header);
  * @param header The ELF64 section header to read.
  * @return The length of the section's data, in bytes.
  */
-extern Elf64_Xword elf64_get_section_size(ELF64_Section_Header* header);
+extern Elf64_Xword elf64_get_section_size(const ELF64_Section_Header* header);
 
 /**
  * Get an ELF64 section's link table index.
@@ -219,7 +221,7 @@ extern Elf64_Xword elf64_get_section_size(ELF64_Section_Header* header);
  * @return The section's link table index.
  */
 extern Elf64_Word elf64_get_section_link_table_index(
-    ELF64_Section_Header* header);
+    const ELF64_Section_Header* header);
 
 /**
  * Get an ELF64 section's extra information.
@@ -227,7 +229,8 @@ extern Elf64_Word elf64_get_section_link_table_index(
  * @param header The ELF64 section header to read.
  * @return The section's extra information. Semantics are CPU dependent.
  */
-extern Elf64_Word elf64_get_section_extra_info(ELF64_Section_Header* header);
+extern Elf64_Word elf64_get_section_extra_info(
+    const ELF64_Section_Header* header);
 
 /**
  * Get an ELF64 section's alignment restriction.
@@ -235,7 +238,8 @@ extern Elf64_Word elf64_get_section_extra_info(ELF64_Section_Header* header);
  * @param header The ELF64 section header to read.
  * @return The section's mandatory data alignment.
  */
-extern Elf64_Xword elf64_get_section_alignment(ELF64_Section_Header* header);
+extern Elf64_Xword elf64_get_section_alignment(
+    const ELF64_Section_Header* header);
 
 /**
  * Get an ELF64 section's fixed entry size, if any exists.
@@ -243,7 +247,8 @@ extern Elf64_Xword elf64_get_section_alignment(ELF64_Section_Header* header);
  * @param header The ELF64 section header to read.
  * @return The section's fixed entry size.
  */
-extern Elf64_Xword elf64_get_section_entry_size(ELF64_Section_Header* header);
+extern Elf64_Xword elf64_get_section_entry_size(
+    const ELF64_Section_Header* header);
 
 /**
  * Prints an ELF64 sections data to the standard out.

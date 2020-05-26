@@ -10,6 +10,7 @@
 
 #include "format/elf64/section.h"
 #include "status.h"
+#include <stdio.h>
 
 /**
  * Associates an ELF64 section type with a human readable string.
@@ -179,7 +180,8 @@ extern PrimStatus elf64_is_section_flag_valid(ELF64_Section_Flag flag)
  * @param header The ELF64 section header to read.
  * @return The address to load the section into.
  */
-extern Elf64_Address elf64_get_section_address(ELF64_Section_Header* header)
+extern Elf64_Address elf64_get_section_address(
+    const ELF64_Section_Header* header)
 {
     Elf64_Address address = 0;
     address = header->address;
@@ -192,7 +194,7 @@ extern Elf64_Address elf64_get_section_address(ELF64_Section_Header* header)
  * @param header The ELF64 section header to read.
  * @return The offset for the data the heder refers to.
  */
-extern Elf64_Offset elf64_get_section_offset(ELF64_Section_Header* header)
+extern Elf64_Offset elf64_get_section_offset(const ELF64_Section_Header* header)
 {
     Elf64_Offset offset = 0;
     offset = header->offset;
@@ -205,7 +207,7 @@ extern Elf64_Offset elf64_get_section_offset(ELF64_Section_Header* header)
  * @param header The ELF64 section header to read.
  * @return The length of the section's data, in bytes.
  */
-extern Elf64_Xword elf64_get_section_size(ELF64_Section_Header* header)
+extern Elf64_Xword elf64_get_section_size(const ELF64_Section_Header* header)
 {
     Elf64_Xword length = 0;
     length = header->offset;
@@ -219,7 +221,7 @@ extern Elf64_Xword elf64_get_section_size(ELF64_Section_Header* header)
  * @return The section's link table index.
  */
 extern Elf64_Word elf64_get_section_link_table_index(
-    ELF64_Section_Header* header)
+    const ELF64_Section_Header* header)
 {
     Elf64_Word link_index = 0;
     link_index = header->link;
@@ -232,7 +234,8 @@ extern Elf64_Word elf64_get_section_link_table_index(
  * @param header The ELF64 section header to read.
  * @return The section's extra information. Semantics are CPU dependent.
  */
-extern Elf64_Word elf64_get_section_extra_info(ELF64_Section_Header* header)
+extern Elf64_Word elf64_get_section_extra_info(
+    const ELF64_Section_Header* header)
 {
     Elf64_Word info = 0;
     info = header->info;
@@ -245,7 +248,8 @@ extern Elf64_Word elf64_get_section_extra_info(ELF64_Section_Header* header)
  * @param header The ELF64 section header to read.
  * @return The section's mandatory data alignment.
  */
-extern Elf64_Xword elf64_get_section_alignment(ELF64_Section_Header* header)
+extern Elf64_Xword elf64_get_section_alignment(
+    const ELF64_Section_Header* header)
 {
     Elf64_Xword align = 0;
     align = header->address_align;
@@ -258,7 +262,8 @@ extern Elf64_Xword elf64_get_section_alignment(ELF64_Section_Header* header)
  * @param header The ELF64 section header to read.
  * @return The section's fixed entry size.
  */
-extern Elf64_Xword elf64_get_section_entry_size(ELF64_Section_Header* header)
+extern Elf64_Xword elf64_get_section_entry_size(
+    const ELF64_Section_Header* header)
 {
     Elf64_Xword entry_size = 0;
     entry_size = header->entry_size;
@@ -273,13 +278,19 @@ extern Elf64_Xword elf64_get_section_entry_size(ELF64_Section_Header* header)
 extern void elf64_print_section_info(const ELF64_Section_Header* header)
 {
     printf("--- ELF64 Section Header ---\n");
-    printf("ELF64 section type: %s\n", elf64_get_section_type_string(elf64_get_section_type(header)));
+    printf("ELF64 section type: %s\n",
+        elf64_get_section_type_string(elf64_get_section_type(header)));
     printf("ELF64 section flags: 0x%lx\n", elf64_get_section_flags(header));
-    printf("ELF64 section load address: 0x%lx\n", elf64_get_section_address(header));
+    printf("ELF64 section load address: 0x%lx\n",
+        elf64_get_section_address(header));
     printf("ELF64 section offset: 0x%lx\n", elf64_get_section_offset(header));
     printf("ELF64 section size: 0x%lx\n", elf64_get_section_size(header));
-    printf("ELF64 section link table index: 0x%x\n", elf64_get_section_link_table_index(header));
-    printf("ELF64 section extra info: 0x%x\n", elf64_get_section_extra_info(header));
-    printf("ELF64 section alignment restriction: 0x%lx\n", elf64_get_section_alignment(header));
-    printf("ELF64 section fixed entry size: 0x%lx\n", elf64_get_section_entry_size(header));
+    printf("ELF64 section link table index: 0x%x\n",
+        elf64_get_section_link_table_index(header));
+    printf("ELF64 section extra info: 0x%x\n",
+        elf64_get_section_extra_info(header));
+    printf("ELF64 section alignment restriction: 0x%lx\n",
+        elf64_get_section_alignment(header));
+    printf("ELF64 section fixed entry size: 0x%lx\n",
+        elf64_get_section_entry_size(header));
 }

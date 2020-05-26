@@ -59,18 +59,24 @@ int main(int argc, char* argv[])
         elf64_get_sh_entry_count(&header));
     printf("ELF64 section name secion header index: 0x%x\n",
         elf64_get_shstr_index(&header));
-    for (int section = 0; section < elf64_get_sh_entry_count(&header); section++)
+    for (int section = 0; section < elf64_get_sh_entry_count(&header);
+         section++)
     {
-        status = prim_fseek(handle, section * sizeof(ELF64_Section_Header) + elf64_get_sh_offset(&header));
+        status = prim_fseek(handle,
+            section * sizeof(ELF64_Section_Header)
+                + elf64_get_sh_offset(&header));
         if (status != STATUS_OKAY)
         {
-            printf("ELF64 section header seek failed: %s\n", get_status_string(status));
+            printf("ELF64 section header seek failed: %s\n",
+                get_status_string(status));
             exit(EXIT_FAILURE);
         }
-        status = prim_fread(&section_header, sizeof(ELF64_Section_Header), 1, handle);
+        status = prim_fread(
+            &section_header, sizeof(ELF64_Section_Header), 1, handle);
         if (status != STATUS_OKAY)
         {
-            printf("ELF64 section header read failed: %s\n", get_status_string(status));
+            printf("ELF64 section header read failed: %s\n",
+                get_status_string(status));
             exit(EXIT_FAILURE);
         }
         elf64_print_section_info(&section_header);
