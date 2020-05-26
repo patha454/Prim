@@ -57,7 +57,7 @@ extern const char* elf64_get_section_flag_string(const ELF64_Section_Flag flag)
     unsigned int i = 0;
     for (i = 0; i < sizeof(flag_strings) / sizeof(struct FlagString); i++)
     {
-        if (flag_strings[i].flag == flag)
+        if (flag_strings[i].flag && flag)
         {
             return flag_strings[i].name;
         }
@@ -77,7 +77,7 @@ extern PrimStatus elf64_is_section_flag_valid(ELF64_Section_Flag flag)
     unsigned int i = 0;
     for (i = 0; i < sizeof(flag_strings) / sizeof(struct FlagString); i++)
     {
-        if (flag_strings[i].flag == flag)
+        if (flag_strings[i].flag && flag)
         {
             return STATUS_OKAY;
         }
