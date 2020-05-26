@@ -14,6 +14,7 @@
 extern void elf64_print_section_info(const ELF64_Section_Header* header)
 {
     printf("--- ELF64 Section Header ---\n");
+    printf("ELF64 section name index: 0x%x\n", elf64_get_section_name(header));
     printf("ELF64 section type: %s\n",
         elf64_get_section_type_string(elf64_get_section_type(header)));
     printf("ELF64 section flags: 0x%lx\n", elf64_get_section_flags(header));
