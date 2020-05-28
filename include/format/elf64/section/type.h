@@ -23,37 +23,55 @@ typedef Elf64_Word ELF64_Section_Type;
 #define ELF64_SECTION_TYPE_NULL 0
 
 /** Information defined by the program. Semantics are program specific. */
-#define ELF64_SECTION_TYPE_PROGBITS 1
+#define ELF64_SECTION_TYPE_PROGBITS 0x1
 
 /** Symbol table intended for static linking. */
-#define ELF64_SECTION_TYPE_SYMBOL_TABLE 2
+#define ELF64_SECTION_TYPE_SYMBOL_TABLE 0x2
 
 /** String table. */
-#define ELF64_SECTION_TYPE_STRING_TABLE 3
+#define ELF64_SECTION_TYPE_STRING_TABLE 0x3
 
 /** Relocatable section with explicit addends. */
-#define ELF64_SECTION_TYPE_RELOC_A 4
+#define ELF64_SECTION_TYPE_RELOC_A 0x4
 
 /** Symbol hash table. */
-#define ELF64_SECTION_TYPE_HASH 5
+#define ELF64_SECTION_TYPE_HASH 0x5
 
 /** Dynamic linking information. */
-#define ELF64_SECTION_TYPE_DYNAMIC 6
+#define ELF64_SECTION_TYPE_DYNAMIC 0x6
 
 /** Notes on the object file. */
-#define ELF64_SECTION_TYPE_NOTE 7
+#define ELF64_SECTION_TYPE_NOTE 0x7
 
 /** Occupies no space in the binary. */
-#define ELF64_SECTION_TYPE_NOBITS 8
+#define ELF64_SECTION_TYPE_NOBITS 0x8
 
 /** Relocatable section without explicit addends. */
-#define ELF64_SECTION_TYPE_RELOC 9
+#define ELF64_SECTION_TYPE_RELOC 0x9
 
 /** Reserved. Undefined semantics. */
-#define ELF64_SECTION_TYPE_SHLIB 10
+#define ELF64_SECTION_TYPE_SHLIB 0xa
 
 /** Dynamic linker symbol table. */
-#define ELF64_SECTION_TYPE_DYNSYM 11
+#define ELF64_SECTION_TYPE_DYNSYM 0xb
+
+/** Initialisation function table. */
+#define ELF64_SECTION_TYPE_INIT_ARRAY 0xe
+
+/** Pre-initialisation initialisation function table. */
+#define ELF64_SECTION_TYPE_PREINIT_ARRAY 0x10
+
+/** Termination function table. */
+#define ELF64_SECTION_TYPE_FINI_ARRAY 0xf
+
+/** GNU style symbol version provisions. */
+#define ELF64_SECTION_TYPE_GNU_VER_DEF 0x6ffffffd
+
+/** GNU style symbol version requirements. */
+#define ELF64_SECTION_TYPE_GNU_VER_REQ 0x6ffffffe
+
+/** GNU style symbol version table. */
+#define ELF64_SECTION_TYPE_GNU_VER_SYM 0x6fffffff
 
 /** Low end of the CPU specific semantics range. */
 #define ELF64_SECTION_TYPE_LOPROC 0x70000000
