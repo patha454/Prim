@@ -5,26 +5,26 @@ cmake_minimum_required(VERSION 3.10)
 project(Prim)
 
 # Set the include paths.
-include_directories(include)
+include_directories(libprim/include)
 
 # Declare the prim library target.
 add_library(prim STATIC
-    src/status.c
-    src/format/elf64/header/machine.c
-    src/format/elf64/header/type.c
-    src/format/elf64/header/header.c
-    src/format/elf64/header/ident.c
-    src/format/elf64/section/header.c
-    src/format/elf64/section/type.c
-    src/format/elf64/section/flags.c
-    src/format/elf64/section/string_table.c
-    src/platform/memory.c
-    src/platform/file.c
+        libprim/src/status.c
+        libprim/src/format/elf64/header/machine.c
+        libprim/src/format/elf64/header/type.c
+        libprim/src/format/elf64/header/header.c
+        libprim/src/format/elf64/header/ident.c
+        libprim/src/format/elf64/section/header.c
+        libprim/src/format/elf64/section/type.c
+        libprim/src/format/elf64/section/flags.c
+        libprim/src/format/elf64/section/string_table.c
+        libprim/src/platform/memory.c
+        libprim/src/platform/file.c
 )
 
 # Declare the prim driver executable target.
 add_executable(prim_app
-    src/main.c
+        prim_app/src/main.c
 )
 
 # Link the Prim driver to the library.
