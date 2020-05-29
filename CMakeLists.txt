@@ -17,6 +17,7 @@ add_library(prim STATIC
     src/format/elf64/section/header.c
     src/format/elf64/section/type.c
     src/format/elf64/section/flags.c
+    src/platform/memory.c
     src/platform/file.c
 )
 

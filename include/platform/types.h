@@ -49,4 +49,7 @@ typedef int32_t prim_s32;
 /** Signed 64-bit integer. */
 typedef int64_t prim_s64;
 
+/** Unsigned native width integer. */
+typedef uintptr_t prim_usize;
+
 #endif
