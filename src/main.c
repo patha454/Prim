@@ -4,8 +4,10 @@
 #include "format/elf64/header/type.h"
 #include "format/elf64/section/flags.h"
 #include "format/elf64/section/header.h"
+#include "format/elf64/section/string_table.h"
 #include "format/elf64/section/type.h"
 #include "platform/file.h"
+#include "platform/memory.h"
 #include "status.h"
 #include <stdio.h>
 #include <stdlib.h>
@@ -15,10 +17,22 @@
  *
  * @param header The ELF64 section header to print.
  */
-extern void elf64_print_section_info(const ELF64_Section_Header* header)
+extern void elf64_print_section_info(const ELF64_Section_Header* header,
+    const ELF64_Section_Header* section_name_table,
+    const char* section_name_data)
 {
+    PrimStatus status = STATUS_INVALID;
+    const char* section_name = NULL;
     printf("--- ELF64 Section Header ---\n");
     printf("ELF64 section name index: 0x%x\n", elf64_get_section_name(header));
+    status = elf64_get_string_table_entry(&section_name, section_name_table,
+        section_name_data, elf64_get_section_name(header));
+    if (status != STATUS_OKAY)
+    {
+        printf("Failed to read section name: %s\n", get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    printf("ELF64 section name: %s\n", section_name);
     printf("ELF64 section type: %s\n",
         elf64_get_section_type_string(elf64_get_section_type(header)));
     if (STATUS_OKAY != elf64_is_section_type_valid(header->type))
@@ -46,6 +60,8 @@ int main(int argc, char* argv[])
     PrimStatus status = STATUS_ERROR;
     Elf64_Header header = { 0 };
     ELF64_Section_Header section_header = { 0 };
+    ELF64_Section_Header section_name_str_table_header = { 0 };
+    char* str_table_data = 0;
     unsigned char* ident = NULL;
     if (argc < 2)
     {
@@ -62,6 +78,44 @@ int main(int argc, char* argv[])
     if (status != STATUS_OKAY)
     {
         printf("Read failed: %s\n", get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    status = prim_fseek(handle,
+        header.sh_offset
+            + header.header_name_strs_index * sizeof(ELF64_Section_Header));
+    if (status != STATUS_OKAY)
+    {
+        printf("Seek section header name string table failed: %s\n",
+            get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    status = prim_fread(&section_name_str_table_header,
+        sizeof(ELF64_Section_Header), 1, handle);
+    if (status != STATUS_OKAY)
+    {
+        printf("Section string table name header read failed: %s\n",
+            get_status_string(status));
+    }
+    status = prim_fseek(handle, section_name_str_table_header.offset);
+    if (status != STATUS_OKAY)
+    {
+        printf("Section string table read failed: %s\n",
+            get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    status = prim_malloc(
+        (void**) &str_table_data, section_name_str_table_header.size);
+    if (status != STATUS_OKAY)
+    {
+        printf("Malloc str table failed: %s\n", get_status_string(status));
+        exit(EXIT_FAILURE);
+    }
+    status = prim_fread(
+        str_table_data, section_name_str_table_header.size, 1, handle);
+    if (status != STATUS_OKAY)
+    {
+        printf("Read section header string table failed: %s\n",
+            get_status_string(status));
         exit(EXIT_FAILURE);
     }
     ident = header.ident;
@@ -113,7 +167,8 @@ int main(int argc, char* argv[])
                 get_status_string(status));
             exit(EXIT_FAILURE);
         }
-        elf64_print_section_info(&section_header);
+        elf64_print_section_info(
+            &section_header, &section_name_str_table_header, str_table_data);
     }
     return 0;
 }
