@@ -53,7 +53,7 @@ static const struct TypeString type_strings[] = {
  * is valid. See `elf64_is_section_type_valid`.
  *
  * @param A pointer to the ELF64 section header.
- * @return The ELF64 object type.
+ * @return The ELF64 section type.
  */
 extern ELF64_Section_Type elf64_get_section_type(
     const ELF64_Section_Header* const header)
@@ -66,7 +66,7 @@ extern ELF64_Section_Type elf64_get_section_type(
 /**
  * Get a string with a human readable section type name.
  *
- * @param type The section type to string-fiy.
+ * @param type The section type to string-ify.
  * @return A human readable section type.
  */
 extern const char* elf64_get_section_type_string(const ELF64_Section_Type type)
@@ -98,7 +98,7 @@ extern const char* elf64_get_section_type_string(const ELF64_Section_Type type)
  * Checks if an ELF64 section type is a valid type code.
  *
  * @param type A section type to test.
- * @return `STATUS_OKAY` if the class is valid,
+ * @return `STATUS_OKAY` if the type is valid,
  * `STATUS_INVALID` otherwise.
  */
 extern PrimStatus elf64_is_section_type_valid(ELF64_Section_Type type)
