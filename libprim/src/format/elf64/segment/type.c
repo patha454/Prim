@@ -9,8 +9,8 @@
  * @date June 2020.
  */
 
-#include "format/elf64/segment/header.h"
 #include "format/elf64/segment/type.h"
+#include "format/elf64/segment/header.h"
 #include "status.h"
 
 /** Associates an ELF64 section type with a human readable string. */
@@ -24,16 +24,17 @@ struct Type_String
 static const struct Type_String type_strings[] = {
     { ELF64_PT_NULL, "ELF64_PT_NULL" },
     { ELF64_PT_LOAD, "ELF64_PT_LOAD" },
-    { ELF64_PT_DYNAMIC, "ELF64_PT_DYNAMIC"},
+    { ELF64_PT_DYNAMIC, "ELF64_PT_DYNAMIC" },
     { ELF64_PT_INTERP, "ELF64_PT_INTERP" },
     { ELF64_PT_NOTE, "ELF64_PT_NOTE" },
-    { ELF64_PT_SHLIB, "ELF64_PT_SHLIB"},
+    { ELF64_PT_SHLIB, "ELF64_PT_SHLIB" },
     { ELF64_PT_PHDR, "ELF64_PT_PHDR" },
     { ELF64_PT_LOPROC, "ELF64_PT_LOPROC" },
-    { ELF64_PT_HIPROC, "ELF64_PT_HIPROC"},
+    { ELF64_PT_HIPROC, "ELF64_PT_HIPROC" },
 };
 
-/** Extract the ELF64 segment type from a segment header.
+/**
+ * Extract the ELF64 segment type from a segment header.
  *
  * @note elf64_get_segment_type does not check if the value is valid. See
  * `elf64_is_segment_type_valid`.
@@ -41,7 +42,8 @@ static const struct Type_String type_strings[] = {
  * @param A pointer to the ELF64 segment header.
  * @return The ELF64 segment types.
  */
-extern Elf64_Segment_Type elf64_get_segment_type(const Elf64_Segment_Header* const header)
+extern Elf64_Segment_Type elf64_get_segment_type(
+    const Elf64_Segment_Header* const header)
 {
     Elf64_Segment_Type type = ELF64_PT_NULL;
     type = (Elf64_Segment_Type) header->p_type;
