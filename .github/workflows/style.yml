@@ -14,4 +14,4 @@ jobs:
         rm clang.tar.gz
         mv clang* clang-10
     - name: clang-format
-      run: find src include -name *.c -or -name *h | xargs clang-10/bin/clang-format -style=file -dry-run -Werror
+      run: find libprim prim_app -name *.c -or -name *h | xargs clang-10/bin/clang-format -style=file -dry-run -Werror
