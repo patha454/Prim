@@ -12,8 +12,6 @@
 #include <stdio.h>
 #include <stdlib.h>
 
-#include <io.h>
-
 /**
  * Prints an ELF64 sections data to the standard out.
  *
