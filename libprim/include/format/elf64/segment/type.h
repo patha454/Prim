@@ -12,13 +12,12 @@
 #ifndef FORMAT_ELF64_SEGMENT_TYPE_H
 #define FORMAT_ELF64_SEGMENT_TYPE_H
 
+#include "format/elf64/segment/header.h"
 #include "format/elf64/types.h"
 
-/**
- * Segment type for ELF64 binaries. We avoid a enum because some specification
- * values are outside the range for a C standard enum (int sized).
- */
-typedef enum Elf64_Type {
+/** Segment type for ELF64 binaries. */
+typedef enum Elf64_Type
+{
     /** Null segment to be ignored. */
     ELF64_PT_NULL = 0,
 
@@ -46,5 +45,17 @@ typedef enum Elf64_Type {
     /** Last Processor specific segment types. */
     ELF64_PT_HIPROC = 0x7fffffff,
 } Elf64_Segment_Type;
+
+/**
+ * Extract the ELF64 segment type from a segment header.
+ *
+ * @note elf64_get_segment_type does not check if the value is valid. See
+ * `elf64_is_segment_type_valid`.
+ *
+ * @param A pointer to the ELF64 segment header.
+ * @return The ELF64 segment types.
+ */
+extern Elf64_Segment_Type elf64_get_segment_type(
+    const Elf64_Segment_Header* header);
 
 #endif

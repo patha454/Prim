@@ -14,7 +14,8 @@
 
 #include "format/elf64/types.h"
 
-typedef struct {
+typedef struct
+{
 
     /** The segment type or interpretation. */
     Elf64_Word p_type;
