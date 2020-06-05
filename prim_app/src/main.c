@@ -64,7 +64,8 @@ void elf64_print_segment_info(const Elf64_Segment_Header* const header)
     status = elf64_is_section_type_valid(elf64_get_segment_type(header));
     if (status != STATUS_OKAY)
     {
-        printf("ELF64 segment type invalid. Value: 0x%x\n", elf64_get_segment_type(header));
+        printf("ELF64 segment type invalid. Value: 0x%x\n",
+            elf64_get_segment_type(header));
     }
     printf("ELF64 segment type: %s\n",
         efl64_get_segment_type_string(elf64_get_segment_type(header)));
