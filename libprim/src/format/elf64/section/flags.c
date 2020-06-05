@@ -31,7 +31,7 @@ static const struct FlagString flag_strings[] = {
  * Extract the ELF64 section flags from a section header.
  *
  * @note elf64_get_section_flags does not check if the flags
- * is valid. See `elf64_is_section_flag_valid`.
+ * are valid. See `elf64_is_section_flag_valid`.
  *
  * @param header pointer to the ELF64 section header.
  * @return The bitfield containing the section flags.

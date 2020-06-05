@@ -6,6 +6,9 @@
 #include "format/elf64/section/header.h"
 #include "format/elf64/section/string_table.h"
 #include "format/elf64/section/type.h"
+#include "format/elf64/segment/flags.h"
+#include "format/elf64/segment/header.h"
+#include "format/elf64/segment/type.h"
 #include "platform/file.h"
 #include "platform/memory.h"
 #include "status.h"
@@ -17,7 +20,7 @@
  *
  * @param header The ELF64 section header to print.
  */
-extern void elf64_print_section_info(const ELF64_Section_Header* header,
+void elf64_print_section_info(const ELF64_Section_Header* const header,
     const ELF64_Section_Header* section_name_table,
     const char* section_name_data)
 {
@@ -54,6 +57,30 @@ extern void elf64_print_section_info(const ELF64_Section_Header* header,
         elf64_get_section_entry_size(header));
 }
 
+void elf64_print_segment_info(const Elf64_Segment_Header* const header)
+{
+    PrimStatus status = STATUS_OKAY;
+    printf("--- ELF64 Segment Header ---\n");
+    status = elf64_is_section_type_valid(elf64_get_segment_type(header));
+    if (status != STATUS_OKAY)
+    {
+        printf("ELF64 segment type invalid. Value: 0x%x\n",
+            elf64_get_segment_type(header));
+    }
+    printf("ELF64 segment type: %s\n",
+        efl64_get_segment_type_string(elf64_get_segment_type(header)));
+    printf("ELf64 segment flags: %s\n",
+        elf64_get_segment_flag_string(elf64_get_segment_flags(header)));
+    printf("ELF64 segment offset: 0x%lx\n", elf64_get_segment_offset(header));
+    printf("ELF64 segment virtual address: 0x%lx\n",
+        elf64_get_segment_vaddr(header));
+    printf("ELF64 segment physical address: 0x%lx\n",
+        elf64_get_segment_paddr(header));
+    printf("ELF64 segment fsize: 0x%lx\n", elf64_get_segment_fsize(header));
+    printf("ELf64 segment msize: 0x%lx\n", elf64_get_segment_msize(header));
+    printf("ELF64 sement alignment: 0x%lx\n", elf64_get_segment_align(header));
+}
+
 int main(int argc, char* argv[])
 {
     prim_file_handle handle = NULL;
@@ -61,6 +88,7 @@ int main(int argc, char* argv[])
     Elf64_Header header = { 0 };
     ELF64_Section_Header section_header = { 0 };
     ELF64_Section_Header section_name_str_table_header = { 0 };
+    Elf64_Segment_Header segment_header = { 0 };
     char* str_table_data = 0;
     unsigned char* ident = NULL;
     if (argc < 2)
@@ -169,6 +197,28 @@ int main(int argc, char* argv[])
         }
         elf64_print_section_info(
             &section_header, &section_name_str_table_header, str_table_data);
+    }
+    for (int segment = 0; segment < elf64_get_ph_entry_count(&header);
+         segment++)
+    {
+        status = prim_fseek(handle,
+            segment * sizeof(Elf64_Segment_Header)
+                + elf64_get_ph_offset(&header));
+        if (status != STATUS_OKAY)
+        {
+            printf("ELF64 segment header seek failed: %s\n",
+                get_status_string(status));
+            exit(EXIT_FAILURE);
+        }
+        status = prim_fread(
+            &segment_header, sizeof(Elf64_Segment_Header), 1, handle);
+        if (status != STATUS_OKAY)
+        {
+            printf(
+                "ELF64 segment read failed: %s\n", get_status_string(status));
+            exit(EXIT_FAILURE);
+        }
+        elf64_print_segment_info(&segment_header);
     }
     return 0;
 }
