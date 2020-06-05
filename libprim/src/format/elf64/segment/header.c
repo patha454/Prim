@@ -1,46 +1,15 @@
 /**
- * @file include/format/elf64/segment/header.h
+ * @file src/format/elf64/segment/header.c
  *
- * `header.h` defines the segment (program) header format used by ELF64, and
- * provides definitions for accessing and reading the segment headers.
+ * `header.c defines function used to access ELF64 segment header fields.
  *
  * @author H Paterson.
- * @copyright BSL-1.0.
+ * @copyright BSL1.0.
  * @date June 2020.
  */
 
-#ifndef FORMAT_ELF64_SEGMENT_HEADER_H
-#define FORMAT_ELF64_SEGMENT_HEADER_H
-
+#include "format/elf64/segment/header.h"
 #include "format/elf64/types.h"
-
-typedef struct
-{
-
-    /** The segment type or interpretation. */
-    Elf64_Word p_type;
-
-    /** Flags relevant to the segment. */
-    Elf64_Word p_flags;
-
-    /** The offset of the segment data in the binary file. */
-    Elf64_Offset p_offset;
-
-    /** The virtual address of the segment when loaded in memory. */
-    Elf64_Address p_vaddr;
-
-    /** The physical address of the segment loaded in memory, if relevant. */
-    Elf64_Address p_paddr;
-
-    /** The size of the segment in the file. May be zero - for example, .bss. */
-    Elf64_Xword p_filesz;
-
-    /** The size of the segment in the memory. May be zero - why? */
-    Elf64_Xword p_memsz;
-
-    /** Section alignment requirements in memory. 0 & 1 mean no requirement. */
-    Elf64_Xword p_align;
-} Elf64_Segment_Header;
 
 /**
  * Read the segment offset from an ELF64 segment header.
@@ -49,7 +18,12 @@ typedef struct
  * @return The offset of the segment data in the ELF file.
  */
 extern Elf64_Offset elf64_get_segment_offset(
-    const Elf64_Segment_Header* header);
+    const Elf64_Segment_Header* const header)
+{
+    Elf64_Offset offset = 0;
+    offset = header->p_offset;
+    return offset;
+}
 
 /**
  * Read the segment virtual address from an ELF64 segment header.
@@ -58,7 +32,12 @@ extern Elf64_Offset elf64_get_segment_offset(
  * @return The virtual address of the segment when loaded into memory.
  */
 extern Elf64_Address elf64_get_segment_vaddr(
-    const Elf64_Segment_Header* header);
+    const Elf64_Segment_Header* const header)
+{
+    Elf64_Address vaddr = 0;
+    vaddr = header->p_vaddr;
+    return vaddr;
+}
 
 /**
  * Read the segment physical address from an ELF64 segment header.
@@ -67,7 +46,12 @@ extern Elf64_Address elf64_get_segment_vaddr(
  * @return The physical address of the segment when loaded into memory.
  */
 extern Elf64_Address elf64_get_segment_paddr(
-    const Elf64_Segment_Header* header);
+    const Elf64_Segment_Header* const header)
+{
+    Elf64_Address paddr = 0;
+    paddr = header->p_paddr;
+    return paddr;
+}
 
 /**
  * Read the the size of an ELF64 segment in the binary file.
@@ -76,7 +60,12 @@ extern Elf64_Address elf64_get_segment_paddr(
  * @return The size of the segment when reading from the file.
  */
 extern Elf64_Address elf64_get_segment_fsize(
-    const Elf64_Segment_Header* header);
+    const Elf64_Segment_Header* const header)
+{
+    Elf64_Xword file_size = 0;
+    file_size = header->p_filesz;
+    return file_size;
+}
 
 /**
  * Read the the size of an ELF64 segment in the memory.
@@ -85,7 +74,12 @@ extern Elf64_Address elf64_get_segment_fsize(
  * @return The size of the segment when loaded into memory.
  */
 extern Elf64_Address elf64_get_segment_msize(
-    const Elf64_Segment_Header* header);
+    const Elf64_Segment_Header* const header)
+{
+    Elf64_Xword mem_size = 0;
+    mem_size = header->p_memsz;
+    return mem_size;
+}
 
 /**
  * Read the the alignment requirements for an ELF64 segment.
@@ -94,6 +88,9 @@ extern Elf64_Address elf64_get_segment_msize(
  * @return The alignment required when loaded into memory.
  */
 extern Elf64_Address elf64_get_segment_align(
-    const Elf64_Segment_Header* header);
-
-#endif
+    const Elf64_Segment_Header* const header)
+{
+    Elf64_Xword align = 0;
+    align = header->p_align;
+    return align;
+}
