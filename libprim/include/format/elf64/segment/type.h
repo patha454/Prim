@@ -14,6 +14,7 @@
 
 #include "format/elf64/segment/header.h"
 #include "format/elf64/types.h"
+#include "status.h"
 
 /** Segment type for ELF64 binaries. */
 typedef enum Elf64_Type
@@ -39,6 +40,12 @@ typedef enum Elf64_Type
     /** Program header segment. */
     ELF64_PT_PHDR = 6,
 
+    /** First OS specific value. */
+    ELF64_PT_LOOS = 0x60000000,
+
+    /** Last OS specific value. */
+    ELF64_PT_HIOS = 0x6fffffff,
+
     /** First processor-specific segment type. */
     ELF64_PT_LOPROC = 0x70000000,
 
@@ -57,5 +64,21 @@ typedef enum Elf64_Type
  */
 extern Elf64_Segment_Type elf64_get_segment_type(
     const Elf64_Segment_Header* header);
+
+/**
+ * Get a string with a human readable segment type name.
+ *
+ * @param type The segment type to string-ify.
+ * @return A human readable segment type name.
+ */
+extern const char* efl64_get_segment_type_string(Elf64_Segment_Type type);
+
+/**
+ * Checks if an ELF64 segment type is a valid segment type value.
+ *
+ * @param type A segment type to test.
+ * @return 'STATUS_OKAY` if the type is valid, `STATUS_INVALID` otherwise.
+ */
+extern PrimStatus efl64_is_segment_type_valid(Elf64_Segment_Type type);
 
 #endif

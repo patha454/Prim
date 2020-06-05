@@ -29,6 +29,8 @@ static const struct Type_String type_strings[] = {
     { ELF64_PT_NOTE, "ELF64_PT_NOTE" },
     { ELF64_PT_SHLIB, "ELF64_PT_SHLIB" },
     { ELF64_PT_PHDR, "ELF64_PT_PHDR" },
+    { ELF64_PT_LOOS, "ELF64_PT_LOOS" },
+    { ELF64_PT_HIOS, "ELF64_PT_HIOS" },
     { ELF64_PT_LOPROC, "ELF64_PT_LOPROC" },
     { ELF64_PT_HIPROC, "ELF64_PT_HIPROC" },
 };
@@ -60,10 +62,15 @@ extern const char* efl64_get_segment_type_string(const Elf64_Segment_Type type)
 {
     static const char* const unrecognised_type = "<ELF64_SEGMENT_TYPE_INVALID>";
     static const char* const proc_range = "ELF64_PT_PROC";
+    static const char* const os_range = "ELF64_PT_OS";
     unsigned int i = 0;
     if (type >= ELF64_PT_LOPROC && type <= ELF64_PT_HIPROC)
     {
         return proc_range;
+    }
+    if (type >= ELF64_PT_LOOS && type <= ELF64_PT_HIOS)
+    {
+        return os_range;
     }
     for (i = 0; i < sizeof(type_strings) / sizeof(struct Type_String); i++)
     {
